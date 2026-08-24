@@ -166,7 +166,7 @@ bullets([
 // --- languages -----------------------------------------------------------------
 section('Languages')
 doc.font('Helvetica').fontSize(9).fillColor(DARK)
-doc.text('English — Professional   •   Urdu — Native   •   Punjabi — Native   •   Arabic — Basic', MARGIN, doc.y, { width: CONTENT_W })
+doc.text('English — Professional   •   Urdu — Native', MARGIN, doc.y, { width: CONTENT_W })
 doc.moveDown(1.2)
 
 // --- career focus ---------------------------------------------------------------
