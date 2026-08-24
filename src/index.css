@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Respect users who prefer reduced motion: no smooth scrolling, no reveals. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-ink font-sans text-paper antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(52, 211, 153, 0.35);
+    color: #f8fafc;
+  }
+
+  :focus-visible {
+    outline: 2px solid #34d399;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Slim dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b1220;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232f45;
+    border-radius: 9999px;
+    border: 2px solid #0b1220;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34d399;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section {
+    @apply scroll-mt-24 py-20 sm:py-24 lg:py-28;
+  }
+
+  .section-label {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-paper sm:text-4xl lg:text-[2.6rem] lg:leading-tight;
+  }
+
+  .section-sub {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-muted;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-navy shadow-card;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-accent-light disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-accent;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:border-accent/50 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/15 disabled:hover:bg-white/5;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink;
+  }
+}
