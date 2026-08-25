@@ -52,7 +52,7 @@ export default function Hero() {
 
           <motion.h1
             {...fadeUp(0.08)}
-            className="text-4xl font-bold leading-[1.08] tracking-tight text-paper sm:text-5xl lg:text-6xl"
+            className="text-4xl font-bold leading-[1.08] tracking-tight text-paper sm:text-5xl lg:text-6xl text-pretty"
           >
             {firstLine}{' '}
             <span className="text-accent">{secondLine}</span>

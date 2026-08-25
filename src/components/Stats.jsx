@@ -33,7 +33,7 @@ export default function Stats() {
                 key={stat.label}
                 className="card flex flex-col gap-2.5 p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6"
               >
-                <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{stat.label}</dt>
+                <dt className="text-xs font-semibold uppercase leading-tight tracking-[0.14em] text-muted">{stat.label}</dt>
                 <dd className="flex flex-col gap-1.5">
                   <span className="text-3xl font-bold tracking-tight text-paper sm:text-4xl">{stat.value}</span>
                   <span className={`text-sm font-medium ${toneClass[stat.tone] ?? 'text-slate-300'}`}>{stat.sub}</span>

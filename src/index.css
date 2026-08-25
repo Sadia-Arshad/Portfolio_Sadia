@@ -56,7 +56,7 @@
   }
 
   .section-title {
-    @apply text-3xl font-semibold tracking-tight text-paper sm:text-4xl lg:text-[2.6rem] lg:leading-tight;
+    @apply text-3xl font-semibold tracking-tight text-paper sm:text-4xl lg:text-[2.6rem] lg:leading-tight text-pretty;
   }
 
   .section-sub {
