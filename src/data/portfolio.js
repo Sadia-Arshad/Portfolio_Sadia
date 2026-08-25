@@ -27,8 +27,7 @@ export const profile = {
   phone: '+92 307 726 8618', // TODO: remove this line if you don't want your phone public
   location: 'Lahore, Pakistan',
   linkedin: 'https://www.linkedin.com/in/sadia-arshad-ch',
-  // TODO: add your real GitHub profile URL below (e.g. https://github.com/yourusername)
-  github: '#',
+  github: 'https://github.com/Sadia-Arshad',
   cvPath: '/Sadia-Arshad-CV.pdf',
 
   yearsExperience: '5+',

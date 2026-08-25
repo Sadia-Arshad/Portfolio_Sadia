@@ -31,7 +31,7 @@ export default function Contact() {
     { label: 'LinkedIn', value: 'linkedin.com/in/sadia-arshad-ch', href: profile.linkedin, icon: Linkedin },
     {
       label: 'GitHub',
-      value: 'github.com/yourusername', // TODO: update once you add your real GitHub URL in src/data/portfolio.js
+      value: 'github.com/Sadia-Arshad',
       href: profile.github,
       icon: Github,
     },
