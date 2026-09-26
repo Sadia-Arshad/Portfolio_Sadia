@@ -282,6 +282,28 @@ export const projects = {
       github: 'https://github.com/ZeeTech-Pvt-Ltd/traderai',
     },
     {
+      name: 'Zephgain',
+      tag: 'Web Application',
+      description:
+        'A pre-rendered React marketing site for an AI-powered automated trading platform in the Australian market. Every route ships as static HTML with its own head, structured data and inlined CSS.',
+      tech: ['React', 'Vite', 'Pre-rendering / SSG', 'Per-route SEO', 'JSON-LD', 'Vercel'],
+      contribution:
+        'Built and shipped the front end: clean-path routing with legacy redirects, a pre-render pipeline that renders every route to static HTML, per-route SEO with Organization, Service and FAQPage structured data, a validated registration form, and a real 404 page served as a 404 rather than a soft fallback.',
+      url: 'https://zephgain-au.com/',
+      github: 'https://github.com/ZeeTech-Pvt-Ltd/Zephgain',
+    },
+    {
+      name: 'AI Pro App',
+      tag: 'Web Application',
+      description:
+        'A multi-page React site for an AI-assisted crypto research and market education platform in Australia, using hand-written SVG charts instead of a charting library.',
+      tech: ['React', 'Vite', 'Tailwind CSS', 'Multi-page build', 'SVG Charts', 'GA4'],
+      contribution:
+        'Built the interface and the build setup end to end: clean-URL routing across 10 static entry points with 308 redirects from the legacy .html links, a post-build step that inlines CSS to remove render-blocking stylesheet requests, an accessible single-open FAQ accordion, legal modals for Privacy, Terms and Risk Disclosure, and a registration form with inline validation and a loading state.',
+      url: 'https://ai-proapp.com/',
+      github: 'https://github.com/ZeeTech-Pvt-Ltd/AI-Pro-App',
+    },
+    {
       name: 'Production WordPress & Hosting Troubleshooting',
       tag: 'Case Study',
       description:

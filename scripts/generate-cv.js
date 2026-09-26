@@ -179,6 +179,11 @@ text(
 const range = doc.bufferedPageRange()
 for (let i = 0; i < range.count; i++) {
   doc.switchToPage(range.start + i)
+  // The footer sits inside the bottom margin (maxY = height - margins.bottom),
+  // so PDFKit's line wrapper would treat it as overflowing and open a fresh
+  // page for it - leaving one trailing blank page per footer. Zeroing the
+  // margin for this write keeps the footer on the page it belongs to.
+  doc.page.margins.bottom = 0
   doc.font('Helvetica').fontSize(7.5).fillColor(MUTE)
   doc.text(
     `${profile.name} — Professional CV`,

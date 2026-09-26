@@ -28,7 +28,7 @@ function ProjectLink({ href, label, icon: Icon, type }) {
 }
 
 export default function Projects() {
-  // Three projects → 3-column grid; two → balanced 2-column grid.
+  // Three projects → 3-column grid; any other count → balanced 2-column grid.
   const projectCols = projects.items.length === 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-2'
   return (
     <section id="projects" aria-label="Projects" className="section">
