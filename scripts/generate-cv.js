@@ -35,7 +35,7 @@ const doc = new PDFDocument({
   size: 'A4',
   margins: { top: 44, bottom: 44, left: MARGIN, right: MARGIN },
   bufferPages: true,
-  info: { Title: 'Sadia Arshad — CV', Author: profile.name },
+  info: { Title: 'Sadia Arshad - CV', Author: profile.name },
 })
 
 // --- layout helpers (single source of truth: doc.y) ------------------------
@@ -95,7 +95,7 @@ doc.moveDown(1)
 // --- professional summary ---------------------------------------------------
 section('Professional Summary')
 text(
-  `WordPress Developer and Web & Hosting Specialist with ${profile.yearsExperience} years of hands-on experience building, maintaining, troubleshooting and deploying websites — from single landing pages to production infrastructure. Strong practical experience with WordPress, Elementor, cPanel/SPanel, domains, DNS, SSL, Cloudflare, hosting migrations and website security, plus modern React/Vite projects, Git/GitHub workflows and production deployment with an ongoing focus on DevOps, AI automation and cloud technologies.`,
+  `WordPress Developer and Web & Hosting Specialist with ${profile.yearsExperience} years of hands-on experience building, maintaining, troubleshooting and deploying websites - from single landing pages to production infrastructure. Strong practical experience with WordPress, Elementor, cPanel/SPanel, domains, DNS, SSL, Cloudflare, hosting migrations and website security, plus modern React/Vite projects, Git/GitHub workflows and production deployment with an ongoing focus on DevOps, AI automation and cloud technologies.`,
 )
 
 // --- core skills ------------------------------------------------------------
@@ -123,7 +123,7 @@ for (const job of experience.items) {
   doc.y = Math.max(doc.y, roleY)
   doc.moveDown(0.15)
 
-  doc.font('Helvetica-Bold').fontSize(8.8).fillColor(ACCENT).text(`${job.company}  —  ${job.location}`)
+  doc.font('Helvetica-Bold').fontSize(8.8).fillColor(ACCENT).text(`${job.company}  -  ${job.location}`)
   doc.moveDown(0.1)
   doc.font('Helvetica-Oblique').fontSize(8.8).fillColor(GRAY).text(job.summary, MARGIN, doc.y, { width: CONTENT_W })
   doc.moveDown(0.25)
@@ -158,15 +158,15 @@ doc.text(
 // --- education ----------------------------------------------------------------
 section('Education & Professional Development')
 bullets([
-  'BS Computer Science (BSCS) — completed 2022',
-  'DevOps Certificate — practical learning in deployment, Linux, servers, Git and DevOps workflows',
+  'BS Computer Science (BSCS) - completed 2022',
+  'DevOps Certificate - practical learning in deployment, Linux, servers, Git and DevOps workflows',
   'Currently developing skills in DevOps, cloud deployment, AI-assisted development and automation',
 ])
 
 // --- languages -----------------------------------------------------------------
 section('Languages')
 doc.font('Helvetica').fontSize(9).fillColor(DARK)
-doc.text('English — Professional   •   Urdu — Native', MARGIN, doc.y, { width: CONTENT_W })
+doc.text('English - Professional   •   Urdu - Native', MARGIN, doc.y, { width: CONTENT_W })
 doc.moveDown(1.2)
 
 // --- career focus ---------------------------------------------------------------
@@ -186,7 +186,7 @@ for (let i = 0; i < range.count; i++) {
   doc.page.margins.bottom = 0
   doc.font('Helvetica').fontSize(7.5).fillColor(MUTE)
   doc.text(
-    `${profile.name} — Professional CV`,
+    `${profile.name} - Professional CV`,
     MARGIN,
     doc.page.height - 28,
     { width: CONTENT_W, align: 'center' },

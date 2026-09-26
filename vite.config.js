@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     // Split stable vendor libs into their own chunks so they are cached
-    // independently and the app entry stays small. Build-time only — has no
+    // independently and the app entry stays small. Build-time only - has no
     // effect on `check:render`, which loads source modules via Vite SSR.
     // (Vite 8's Rolldown bundler only accepts the function form of
     // manualChunks, not the object form.)
@@ -32,7 +32,7 @@ export default defineConfig({
     css: false,
     // The default "forks" pool spawns one child process per test file, which
     // times out on this machine during worker startup. Worker threads running
-    // serially are lighter and reliable here — plenty fast for 6 small files.
+    // serially are lighter and reliable here - plenty fast for 6 small files.
     pool: 'threads',
     singleThread: true,
   },

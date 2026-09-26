@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark-first palette — navy background, emerald accent.
+        // Dark-first palette - navy background, emerald accent.
         ink: '#0B1220', // deep navy (page background)
         navy: '#111827', // navy (cards / surfaces)
         'navy-light': '#1A2434', // raised surfaces

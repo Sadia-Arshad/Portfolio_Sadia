@@ -15,7 +15,7 @@ const skillIcons = {
 
 /**
  * Per-category colour treatments. Full class strings are written out so
- * Tailwind can see them — never build these dynamically.
+ * Tailwind can see them - never build these dynamically.
  * `from` is the gradient stop for the card's top accent bar.
  */
 const tones = {

@@ -1,7 +1,7 @@
 import Reveal from './Reveal'
 
 /**
- * SectionHeading — kicker, title and optional subtitle for each section.
+ * SectionHeading - kicker, title and optional subtitle for each section.
  * `align` can be 'left' or 'center'.
  */
 export default function SectionHeading({ kicker, title, sub, align = 'left' }) {

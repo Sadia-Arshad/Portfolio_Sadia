@@ -1,4 +1,4 @@
-# Sadia Arshad — Portfolio
+# Sadia Arshad - Portfolio
 
 A production-ready personal portfolio website for **Sadia Arshad**, a WordPress Developer & Web & Hosting Specialist. Built with **React + Vite + Tailwind CSS**, this is a fast, single-page, fully responsive site designed for recruiters, clients and international remote opportunities.
 
@@ -8,13 +8,13 @@ A production-ready personal portfolio website for **Sadia Arshad**, a WordPress 
 
 ## 1. Project Overview
 
-The site presents Sadia's professional profile, skills, experience, projects, services and contact details. It uses a premium dark-first developer aesthetic (deep navy + emerald accent) with subtle micro-interactions — no heavy gradients or over-animation.
+The site presents Sadia's professional profile, skills, experience, projects, services and contact details. It uses a premium dark-first developer aesthetic (deep navy + emerald accent) with subtle micro-interactions - no heavy gradients or over-animation.
 
 Highlights:
 
-- **Single page** with anchor navigation (no router needed — deploys anywhere safely).
+- **Single page** with anchor navigation (no router needed - deploys anywhere safely).
 - **Scroll-spy navbar** with a working mobile hamburger menu.
-- **Service-level metrics band** (Ticket SLA · Sites Optimized · Malware Cleanups · Uptime) between About and Skills — edit values in `src/data/portfolio.js` → `serviceStats`.
+- **Service-level metrics band** (Ticket SLA · Sites Optimized · Malware Cleanups · Uptime) between About and Skills - edit values in `src/data/portfolio.js` → `serviceStats`.
 - **Download CV** button that serves `public/Sadia-Arshad-CV.pdf`.
 - **Contact form** that opens the visitor's email app (no backend).
 - All content lives in **`src/data/portfolio.js`** so you can edit it in one place.
@@ -82,7 +82,7 @@ npm run check:render
    ```
 
 2. On GitHub, go to **Settings → Pages** and choose **"GitHub Actions"** or **"Deploy from a branch"** pointing at `main`.
-3. Add a workflow (or just connect the repo to Vercel — see below). For GitHub Pages you'll want a `base` path — use [Vercel](#7-vercel-deployment) for a zero-config deployment.
+3. Add a workflow (or just connect the repo to Vercel - see below). For GitHub Pages you'll want a `base` path - use [Vercel](#7-vercel-deployment) for a zero-config deployment.
 
 ## 7. Vercel Deployment
 
@@ -101,10 +101,10 @@ Every push to `main` now deploys automatically. (Optional: set a custom domain u
 
 The **Download CV** button serves `public/Sadia-Arshad-CV.pdf`.
 
-**Option A — replace the file directly (easiest):**
+**Option A - replace the file directly (easiest):**
 Delete `public/Sadia-Arshad-CV.pdf` and drop in your own PDF with the same filename. Nothing else changes.
 
-**Option B — regenerate from the site content:**
+**Option B - regenerate from the site content:**
 The PDF is generated from the same data as the website:
 
 ```bash
@@ -147,7 +147,7 @@ Search the file for `TODO` to find every placeholder.
 
 3. For live client sites, add to `projects.liveSites.sites`.
 
-Buttons stay visibly **disabled** until you add a real URL — the `#` is only a temporary placeholder (marked with TODO comments).
+Buttons stay visibly **disabled** until you add a real URL - the `#` is only a temporary placeholder (marked with TODO comments).
 
 ## 11. Project Structure
 

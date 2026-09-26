@@ -3,7 +3,7 @@ import { Download, Menu, X } from 'lucide-react'
 import { navLinks, profile } from '../data/portfolio.js'
 
 /**
- * Navbar — sticky header with scroll-spy, a mobile hamburger menu and a
+ * Navbar - sticky header with scroll-spy, a mobile hamburger menu and a
  * Download CV button pointing to the PDF in /public.
  */
 export default function Navbar() {
@@ -61,7 +61,7 @@ export default function Navbar() {
         <a
           href="#home"
           className="text-lg font-extrabold tracking-[0.18em] text-paper"
-          aria-label={`${profile.name} — back to top`}
+          aria-label={`${profile.name} - back to top`}
         >
           {profile.name.toUpperCase().split(' ')[0]}
           <span className="text-accent">.</span>

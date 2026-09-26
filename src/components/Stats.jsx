@@ -13,7 +13,7 @@ const toneClass = {
 }
 
 /**
- * Stats — a compact service-level metrics band (Ticket SLA, sites optimized,
+ * Stats - a compact service-level metrics band (Ticket SLA, sites optimized,
  * malware cleanups, uptime). Mirrors the metric tiles on jahirul.com.bd:
  * a label, a bold value and a colour-coded sub-label per tile.
  */

@@ -14,14 +14,14 @@ export default function Contact() {
   }
 
   /**
-   * No backend on this site — the form opens the visitor's email app with the
+   * No backend on this site - the form opens the visitor's email app with the
    * message pre-filled. To use a form service instead (e.g. Formspree), swap
    * this handler for a fetch() call to your form endpoint.
    */
   const handleSubmit = (e) => {
     e.preventDefault()
     const subject = encodeURIComponent(`Project enquiry from ${form.name}`)
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name}\n${form.email}`)
+    const body = encodeURIComponent(`${form.message}\n\n- ${form.name}\n${form.email}`)
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
     setSent(true)
   }
@@ -160,7 +160,7 @@ export default function Contact() {
 
               {sent && (
                 <p role="status" className="mt-4 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
-                  Your email app should have opened — thanks for reaching out!
+                  Your email app should have opened - thanks for reaching out!
                 </p>
               )}
             </form>

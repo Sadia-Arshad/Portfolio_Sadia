@@ -1,4 +1,4 @@
-// Generates public/og-image.png — the 1200×630 Open Graph / Twitter share image.
+// Generates public/og-image.png - the 1200×630 Open Graph / Twitter share image.
 // Run once locally: npm run build:og  → then commit the PNG.
 // (Vercel serves the committed PNG; no rasterization needed at build time.)
 import sharp from 'sharp'

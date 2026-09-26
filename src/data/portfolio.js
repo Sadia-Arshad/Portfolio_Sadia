@@ -17,12 +17,12 @@ export const profile = {
   availability: 'Available for Web Development & Technical Projects',
   heading: 'Building Reliable Websites From Development to Deployment.',
   heroText:
-    'WordPress Developer with 5+ years of practical experience in web development, hosting, domains, DNS, SSL, security and production troubleshooting — with growing expertise in React, DevOps and AI automation.',
+    'WordPress Developer with 5+ years of practical experience in web development, hosting, domains, DNS, SSL, security and production troubleshooting - with growing expertise in React, DevOps and AI automation.',
 
   // Tech strip shown under the hero CTAs
   techStrip: ['WordPress', 'React', 'Vite', 'Tailwind', 'Git', 'Cloudflare', 'Linux', 'DevOps'],
 
-  // Contact (from your CV — update if needed)
+  // Contact (from your CV - update if needed)
   email: 'misbahsadiach@gmail.com',
   phone: '+92 307 726 8618', // TODO: remove this line if you don't want your phone public
   location: 'Lahore, Pakistan',
@@ -50,7 +50,7 @@ export const about = {
   kicker: 'About Me',
   heading: 'WordPress, hosting and the full stack around it.',
   paragraphs: [
-    "I'm a WordPress Developer with 5+ years of hands-on experience building, maintaining, troubleshooting and deploying websites — from a single landing page to production infrastructure.",
+    "I'm a WordPress Developer with 5+ years of hands-on experience building, maintaining, troubleshooting and deploying websites - from a single landing page to production infrastructure.",
     'My work goes beyond WordPress development. I manage hosting environments, cPanel and SPanel, domains, DNS, SSL certificates, Cloudflare, server configuration, migrations, security and production troubleshooting. I also build modern frontends with React, Vite and Tailwind CSS, and ship with Git/GitHub on platforms like Vercel and Render.',
     "I'm currently deepening my skills in DevOps, cloud deployment, AI-assisted development and workflow automation.",
   ],
@@ -73,7 +73,7 @@ export const about = {
 // Service-level stats (Ticket SLA band)
 // ----------------------------------------------------------------------------
 // A standalone metrics strip shown between the About section and Skills.
-// Values are claims about service levels — keep them truthful to your real
+// Values are claims about service levels - keep them truthful to your real
 // work before publishing.
 export const serviceStats = {
   kicker: 'Service Levels',
@@ -91,7 +91,7 @@ export const serviceStats = {
 export const skills = {
   kicker: 'Skills',
   heading: 'A full-stack skill set around WordPress.',
-  sub: 'From theme and plugin work to servers, DNS, security and modern frontend tooling — everything needed to own a website end to end.',
+  sub: 'From theme and plugin work to servers, DNS, security and modern frontend tooling - everything needed to own a website end to end.',
   groups: [
     {
       title: 'WordPress',
@@ -214,18 +214,18 @@ export const experience = {
       role: 'WordPress Developer & Linux Server Administrator',
       company: 'Zeetech (Pvt.) Ltd',
       location: 'Lahore, Pakistan',
-      period: 'Oct 2023 — Present',
+      period: 'Oct 2023 - Present',
       type: 'Full-time',
       summary:
         'Developing and operating WordPress platforms for financial trading, AI education and health clients across the UAE and Europe.',
       points: [
         'Designed and developed WordPress websites for financial trading, AI education and health platforms serving UAE and European clients',
-        'Administered Linux web servers via SSH — file management, permissions and command-line troubleshooting',
+        'Administered Linux web servers via SSH - file management, permissions and command-line troubleshooting',
         'Monitored and resolved Apache/Nginx/PHP error logs on live production sites',
         'Detected, isolated and removed malware and code injection attacks; restored and hardened server security',
         'Managed DNS records (A, CNAME, MX, TXT), domain routing, email setup and propagation troubleshooting',
         'Configured firewall rules and IP blocking/unblocking against DDoS and brute-force attacks',
-        'Administered MySQL databases via terminal — queries, table repair, backup and restoration',
+        'Administered MySQL databases via terminal - queries, table repair, backup and restoration',
         'Managed the full hosting lifecycle: cPanel, domains, SSL/TLS install and renewal, uptime monitoring',
       ],
     },
@@ -233,14 +233,14 @@ export const experience = {
       role: 'Freelance WordPress Developer & Server Manager',
       company: 'Self-Employed',
       location: 'Remote · Pakistan',
-      period: '2022 — Present',
+      period: '2022 - Present',
       type: 'Freelance',
       summary:
         'Delivering complete WordPress builds and managing hosting and server infrastructure for clients in Switzerland, the USA and Pakistan.',
       points: [
         'Delivered complete WordPress websites for clients in Switzerland, the USA and Pakistan',
-        'Managed server environments independently — SSH, cPanel, DNS, SSL and post-launch maintenance',
-        'Resolved live emergencies — code injection, DNS failures, SSL expiry and downtime recovery',
+        'Managed server environments independently - SSH, cPanel, DNS, SSL and post-launch maintenance',
+        'Resolved live emergencies - code injection, DNS failures, SSL expiry and downtime recovery',
         'Communicated technical work clearly with clients, hosting providers and team members',
       ],
     },
@@ -248,13 +248,13 @@ export const experience = {
       role: 'WordPress Developer',
       company: 'Enfotrix (Pvt.) Ltd',
       location: 'Sargodha, Pakistan',
-      period: 'Sep 2021 — Sep 2023',
+      period: 'Sep 2021 - Sep 2023',
       type: 'Full-time',
       summary:
         'Built and maintained WordPress and WooCommerce websites across eCommerce, health and creative industries.',
       points: [
         'Built 10+ WordPress websites across eCommerce, health and creative industries',
-        'Achieved 90–100 Google PageSpeed scores through server-side optimization and caching',
+        'Achieved 90-100 Google PageSpeed scores through server-side optimization and caching',
         'Developed WooCommerce stores with payment gateway integration',
         'Provided ongoing maintenance, server support and client technical assistance',
       ],
@@ -274,7 +274,7 @@ export const projects = {
       name: 'AI Trading / TraderAI',
       tag: 'Web Application',
       description:
-        'A modern AI trading assistant web application built with React and Vite — a routed, production-grade interface for trading dashboards, AI-assisted chart analysis and market tools.',
+        'A modern AI trading assistant web application built with React and Vite - a routed, production-grade interface for trading dashboards, AI-assisted chart analysis and market tools.',
       tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'Git / GitHub', 'Render'],
       contribution:
         'Built the application end to end and shipped it to production: React routing, responsive dashboards, AI assistant interface, chart analysis UI, custom-domain configuration and performance / caching optimization.',
@@ -310,7 +310,7 @@ export const projects = {
         'Real-world production troubleshooting across WordPress websites, hosting servers, DNS, SSL, PHP configuration, plugins, Cloudflare and performance.',
       tech: ['WordPress', 'cPanel / SPanel', 'Cloudflare', 'DNS', 'SSL', 'PHP-FPM', 'LiteSpeed'],
       contribution:
-        'Resolved critical WordPress errors, PHP configuration and limit issues, plugin conflicts, SSL problems, DNS/SERVFAIL issues, PHP-FPM/resource problems and Cloudflare configuration — plus website migrations and hosting-provider support escalation.',
+        'Resolved critical WordPress errors, PHP configuration and limit issues, plugin conflicts, SSL problems, DNS/SERVFAIL issues, PHP-FPM/resource problems and Cloudflare configuration - plus website migrations and hosting-provider support escalation.',
       url: '#', // TODO: add a case-study page link when available
       github: '#', // TODO: add the repository URL when available
     },
@@ -320,16 +320,26 @@ export const projects = {
     note: 'Production sites I have built and maintained for clients, listed in my professional CV.',
     // TODO: remove or edit any site below you no longer want listed.
     sites: [
-      { name: 'threadstudioofficial.com', note: 'Fashion eCommerce — WooCommerce, Elementor Pro', url: 'https://threadstudioofficial.com' },
-      { name: 'nomadlaw.ch', note: 'Swiss law firm — multilingual EN/DE, DNS & SSL', url: 'https://nomadlaw.ch' },
-      { name: 'ai-trader.trade', note: 'AI trading education — hardened server, API integrated', url: 'https://ai-trader.trade/' },
-      { name: 'zenon-flow.net', note: 'Investment platform — firewall, real-time data', url: 'https://zenon-flow.net' },
-      { name: 'biogenie.dz', note: 'French skincare eCommerce — WooCommerce, optimized', url: 'https://biogenie.dz' },
-      { name: 'equranschool.com', note: 'Islamic education — SSH-managed, multi-timezone', url: 'https://equranschool.com' },
-      { name: 'glucose-support.com', note: 'Health eCommerce — malware cleaned, optimized', url: 'https://glucose-support.com' },
-      { name: 'gain-oilprofit.com', note: 'Oil trading — live financial data, server admin', url: 'https://gain-oilprofit.com' },
-      { name: 'forexfury.bot', note: 'Forex automation — plugin integration, market feeds', url: 'https://forexfury.bot' },
-      { name: 'site-trust.com', note: 'Business review platform — security hardened', url: 'https://site-trust.com' },
+      { name: 'threadstudioofficial.com', note: 'Fashion eCommerce - WooCommerce, Elementor Pro', url: 'https://threadstudioofficial.com' },
+      { name: 'nomadlaw.ch', note: 'Swiss law firm - multilingual EN/DE, DNS & SSL', url: 'https://nomadlaw.ch' },
+      { name: 'ai-trader.trade', note: 'AI trading education - hardened server, API integrated', url: 'https://ai-trader.trade/' },
+      { name: 'zenon-flow.net', note: 'Investment platform - firewall, real-time data', url: 'https://zenon-flow.net' },
+      { name: 'biogenie.dz', note: 'French skincare eCommerce - WooCommerce, optimized', url: 'https://biogenie.dz' },
+      { name: 'equranschool.com', note: 'Islamic education - SSH-managed, multi-timezone', url: 'https://equranschool.com' },
+      { name: 'gain-oilprofit.com', note: 'Oil trading - live financial data, server admin', url: 'https://gain-oilprofit.com' },
+      { name: 'forexfury.bot', note: 'Forex automation - plugin integration, market feeds', url: 'https://forexfury.bot' },
+      { name: 'site-trust.com', note: 'Business review platform - security hardened', url: 'https://site-trust.com' },
+      { name: 'ai-nobiloption.com', note: 'AI automated trading - 24/7 strategies, live signals', url: 'https://ai-nobiloption.com/' },
+      { name: 'ausietraderai.com', note: 'AI crypto research - market data, charts, watchlists', url: 'https://ausietraderai.com/' },
+      { name: 'ceravindo-platform.com', note: 'AI market research - crypto & multi-market analysis', url: 'https://ceravindo-platform.com/' },
+      { name: 'forge-capmoor.net', note: 'Automated trading - explains its own reasoning', url: 'https://forge-capmoor.net/' },
+      { name: 'memorifund-ai-platform.com', note: 'AI automated trading - 24/7 strategies, live signals', url: 'https://memorifund-ai-platform.com/' },
+      { name: 'skywardinvexa-au.com', note: 'Multi-asset market access for Australian investors', url: 'https://skywardinvexa-au.com/' },
+      { name: 'sovereign-kapitix.net', note: 'AI automated trading platform - Australia', url: 'https://sovereign-kapitix.net/' },
+      { name: 'traderai-au.com', note: 'AI market analysis - patterns & trend tracking', url: 'https://traderai-au.com/' },
+      { name: 'austeriosmart-up.com', note: 'AI automated trading - 24/7 strategies, live signals', url: 'https://austeriosmart-up.com/' },
+      { name: 'fels-wertburgai.com', note: 'AI crypto research assistant - Australia', url: 'https://fels-wertburgai.com/' },
+      { name: 'keen-accruvance.com', note: 'AI crypto trading platform & signals', url: 'https://keen-accruvance.com/' },
     ],
   },
 }
@@ -340,7 +350,7 @@ export const projects = {
 export const services = {
   kicker: 'Services',
   heading: 'What I can help you with.',
-  sub: 'End-to-end web services — from building a WordPress site to keeping it fast, secure and online.',
+  sub: 'End-to-end web services - from building a WordPress site to keeping it fast, secure and online.',
   items: [
     {
       title: 'WordPress Development',
@@ -387,7 +397,7 @@ export const services = {
     {
       title: 'React Frontend Development',
       icon: 'code',
-      description: 'Modern, responsive frontends with React, Vite and Tailwind CSS — deploy-ready on Vercel.',
+      description: 'Modern, responsive frontends with React, Vite and Tailwind CSS - deploy-ready on Vercel.',
       points: ['React + Vite applications', 'Tailwind CSS UI', 'Deployment to Vercel / Render'],
     },
   ],
@@ -401,7 +411,7 @@ export const contact = {
   heading: "Let's work together.",
   sub: 'Have a project, a WordPress site that needs help, or a role you think I would fit? I would love to hear from you.',
   availability: 'Available for full-time roles, freelance projects and technical work.',
-  formNote: 'This form opens your email app with the message ready to send — no backend required.',
+  formNote: 'This form opens your email app with the message ready to send - no backend required.',
 }
 
 export const footer = {

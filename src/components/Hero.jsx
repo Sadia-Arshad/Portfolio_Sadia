@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
 })
 
 /**
- * The "system" rows shown in the hero card — a truthful summary of the
+ * The "system" rows shown in the hero card - a truthful summary of the
  * areas Sadia manages, not fabricated metrics.
  */
 const systemRows = [
@@ -29,7 +29,7 @@ export default function Hero() {
 
   return (
     <section id="home" aria-label="Introduction" className="relative overflow-hidden">
-      {/* Subtle background accents only — kept restrained per design direction */}
+      {/* Subtle background accents only - kept restrained per design direction */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 right-0 h-[34rem] w-[34rem] rounded-full bg-accent/[0.05] blur-[120px]"
@@ -40,7 +40,7 @@ export default function Hero() {
       />
 
       <div className="container-page relative grid items-center gap-12 py-20 sm:py-24 lg:grid-cols-12 lg:gap-8 lg:py-28">
-        {/* Left — copy */}
+        {/* Left - copy */}
         <div className="lg:col-span-7">
           <motion.p
             {...fadeUp(0)}
@@ -90,7 +90,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right — capability card */}
+        {/* Right - capability card */}
         <motion.div {...fadeUp(0.2)} className="lg:col-span-5">
           <div className="relative mx-auto max-w-md">
             <div

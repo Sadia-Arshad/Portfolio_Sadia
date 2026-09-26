@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 /**
- * Reveal — a small scroll-reveal wrapper used across the site.
+ * Reveal - a small scroll-reveal wrapper used across the site.
  * Animates content in once, gently, and respects prefers-reduced-motion.
  */
 export default function Reveal({ children, delay = 0, y = 22, className }) {
