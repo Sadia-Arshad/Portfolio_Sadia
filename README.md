@@ -54,7 +54,22 @@ Open the printed URL (usually `http://localhost:5173`).
 npm run build
 ```
 
-The production bundle is written to the standard Vite `dist/` directory.
+The build runs in two steps:
+
+1. `vite build` writes the client bundle to `dist/`.
+2. `scripts/prerender.mjs` post-processes `dist/index.html`:
+   - **Pre-renders** `<App/>` to HTML and bakes it into `<div id="root">`, so the
+     shipped page contains the real content instead of an empty shell. Crawlers,
+     social scrapers and bots that do not run JavaScript now read the whole page,
+     and `main.jsx` hydrates that markup instead of throwing it away.
+   - **Inlines the CSS** (about 27 KB, ~6 KB gzipped) so there is no
+     render-blocking stylesheet left on the critical path.
+
+To build the client bundle on its own, without pre-rendering:
+
+```bash
+npm run build:client
+```
 
 Preview it locally:
 
@@ -62,11 +77,14 @@ Preview it locally:
 npm run preview
 ```
 
-Sanity-check that the whole page renders without errors (headless render smoke test):
+Two checks worth running before you push:
 
 ```bash
-npm run check:render
+npm run check:render   # headless render smoke test - does the whole page render?
+npm run check:seo      # validates built dist/: prerender, meta, OG, JSON-LD, crawl files
 ```
+
+`check:seo` reads `dist/`, so run `npm run build` first.
 
 ## 6. GitHub Deployment
 
@@ -154,9 +172,19 @@ Buttons stay visibly **disabled** until you add a real URL - the `#` is only a t
 ```
 public/
   Sadia-Arshad-CV.pdf          ← Download CV target
-  favicon.svg
+  favicon.svg                  ← vector icon (browsers that support it)
+  apple-touch-icon.png         ← npm run build:icons
+  icon-192.png  icon-512.png   ← npm run build:icons
+  og-image.png                 ← npm run build:og
+  site.webmanifest             ← install / PWA metadata
+  robots.txt  sitemap.xml
 scripts/
+  prerender.mjs                ← pre-renders + inlines CSS (runs inside npm run build)
+  seo-check.mjs                ← npm run check:seo
+  ssr-check.mjs                ← npm run check:render
   generate-cv.js               ← npm run build:cv
+  generate-icons.mjs           ← npm run build:icons
+  generate-og-image.mjs        ← npm run build:og
 src/
   components/
     Navbar.jsx   Hero.jsx      About.jsx      Stats.jsx
@@ -166,15 +194,29 @@ src/
   data/
     portfolio.js               ← ALL site content
   App.jsx   main.jsx   index.css
-index.html                     ← SEO meta tags
+index.html                     ← SEO meta tags, structured data, pre-render target
 vite.config.js  tailwind.config.js  postcss.config.js
 ```
 
 ## 12. Notes & TODO Checklist
 
-- [ ] Add your real **GitHub** URL in `src/data/portfolio.js`.
-- [ ] Add live project links (`projects.items[].url`) when available.
-- [ ] Add a 1200×630 share image and update `og:image` / `twitter:image` in `index.html`.
-- [ ] Replace the placeholder `og:url` in `index.html` with your real domain after deploying.
+Already in place:
+
+- [x] Real **GitHub** URL in `src/data/portfolio.js`.
+- [x] 1200×630 share image at `public/og-image.png`, wired to `og:image` / `twitter:image`.
+- [x] Page pre-rendered and CSS inlined, so a crawler that runs no JavaScript still
+      reads the full page (verified by `npm run check:seo`).
+- [x] `robots.txt`, `sitemap.xml`, `site.webmanifest`, favicon and app icons.
+- [x] Reviewed the **Selected Live Websites** list.
+
+Still open:
+
+- [ ] The case-study entry in `projects.items` still uses `#` for its project and
+      GitHub links, so those buttons render disabled. Add real URLs when you have them.
+- [ ] If you move to a custom domain, change it everywhere in one pass: `canonical`,
+      `og:url`, `og:image`, `twitter:image` and the JSON-LD `@id`/`url` values in
+      `index.html`, the `Sitemap:` line in `public/robots.txt`, and the `<loc>` in
+      `public/sitemap.xml`.
+- [ ] Bump `<lastmod>` in `public/sitemap.xml` whenever the page content changes.
 - [ ] Optionally remove the public **phone** number if you prefer not to show it.
-- [ ] Review the **Selected Live Websites** list and remove any you don't want public.
+- [ ] Re-run `npm run build:icons` if you ever change the monogram in `favicon.svg`.

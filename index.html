@@ -2,27 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--
       DOMAIN NOTE: everything below points at the current Vercel URL.
       If you later set a custom domain (e.g. https://sadiaarshad.dev), update
-      these together: canonical, og:url, og:image, twitter:image, plus the
-      Sitemap:/Domain lines in public/robots.txt and the <loc> in
-      public/sitemap.xml.
+      these together: canonical, og:url, og:image, twitter:image, the @id values
+      and urls in the JSON-LD, plus the Sitemap: line in public/robots.txt and
+      the <loc> in public/sitemap.xml.
     -->
 
     <!-- Primary meta -->
     <title>Sadia Arshad | WordPress Developer &amp; Web Hosting Specialist</title>
     <meta
       name="description"
-      content="Professional portfolio of Sadia Arshad, a WordPress Developer and Web &amp; Hosting Specialist with 5+ years of practical experience in WordPress, hosting, DNS, SSL, security, React and DevOps."
+      content="Sadia Arshad is a WordPress Developer and Web &amp; Hosting Specialist with 5+ years across WordPress, hosting, DNS, SSL, security, React and DevOps."
     />
     <meta name="author" content="Sadia Arshad" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0B1220" />
     <link rel="canonical" href="https://portfolio-sadia-rho.vercel.app/" />
+
+    <!-- Icons and web manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -35,6 +39,7 @@
       content="WordPress Developer and Web &amp; Hosting Specialist with 5+ years of practical experience in WordPress, hosting, domains, DNS, SSL, security, React and DevOps."
     />
     <meta property="og:image" content="https://portfolio-sadia-rho.vercel.app/og-image.png" />
+    <meta property="og:image:secure_url" content="https://portfolio-sadia-rho.vercel.app/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -50,19 +55,49 @@
     <meta name="twitter:image" content="https://portfolio-sadia-rho.vercel.app/og-image.png" />
     <meta name="twitter:image:alt" content="Sadia Arshad - WordPress Developer &amp; Web Hosting Specialist" />
 
-    <!-- Structured data -->
+    <!--
+      Structured data. One Person node, referenced by @id from the ProfilePage
+      and WebSite nodes, so the three blocks describe a single linked graph
+      rather than three unrelated people. Every value here comes from
+      src/data/portfolio.js - nothing is invented for the crawler.
+    -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://portfolio-sadia-rho.vercel.app/#person",
       "name": "Sadia Arshad",
       "jobTitle": "WordPress Developer & Web Hosting Specialist",
+      "description": "WordPress Developer and Web & Hosting Specialist with 5+ years of hands-on experience in WordPress, hosting, DNS, SSL, website security, React and DevOps.",
       "url": "https://portfolio-sadia-rho.vercel.app/",
+      "image": "https://portfolio-sadia-rho.vercel.app/og-image.png",
       "email": "mailto:misbahsadiach@gmail.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Lahore", "addressCountry": "PK" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lahore",
+        "addressCountry": "PK"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Zeetech (Pvt.) Ltd"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "BS Computer Science (BSCS), completed 2022"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "DevOps Certificate",
+        "credentialCategory": "certificate"
+      },
+      "knowsLanguage": [
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Urdu", "alternateName": "ur" }
+      ],
       "knowsAbout": [
-        "WordPress", "Web Hosting", "DNS", "SSL", "Website Security",
-        "Malware Removal", "React", "Vite", "Tailwind CSS", "DevOps"
+        "WordPress", "Elementor", "Web Hosting", "cPanel", "SPanel", "Linux",
+        "DNS", "SSL", "Website Security", "Malware Removal", "Cloudflare",
+        "React", "Vite", "Tailwind CSS", "Node.js", "Git", "DevOps", "Technical SEO"
       ],
       "sameAs": [
         "https://www.linkedin.com/in/sadia-arshad-ch",
@@ -73,21 +108,52 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://portfolio-sadia-rho.vercel.app/#profilepage",
+      "url": "https://portfolio-sadia-rho.vercel.app/",
+      "name": "Sadia Arshad - WordPress Developer & Web Hosting Specialist",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://portfolio-sadia-rho.vercel.app/#website" },
+      "mainEntity": { "@id": "https://portfolio-sadia-rho.vercel.app/#person" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://portfolio-sadia-rho.vercel.app/#website",
       "name": "Sadia Arshad Portfolio",
       "url": "https://portfolio-sadia-rho.vercel.app/",
       "description": "Professional portfolio of Sadia Arshad, a WordPress Developer and Web & Hosting Specialist.",
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "publisher": { "@id": "https://portfolio-sadia-rho.vercel.app/#person" }
     }
     </script>
 
-    <!-- Fonts: Inter -->
+    <!--
+      Fonts: Inter. Loaded non-blocking - the stylesheet is fetched eagerly via
+      preload but applied only once it arrives, so a slow font CDN never holds
+      up first paint. The <noscript> copy covers visitors without JavaScript.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

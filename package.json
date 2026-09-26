@@ -6,11 +6,14 @@
   "description": "Professional portfolio of Sadia Arshad - WordPress Developer & Web Hosting Specialist.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:client": "vite build",
     "preview": "vite preview",
     "build:cv": "node scripts/generate-cv.js",
     "build:og": "node scripts/generate-og-image.mjs",
+    "build:icons": "node scripts/generate-icons.mjs",
     "check:render": "node scripts/ssr-check.mjs",
+    "check:seo": "node scripts/seo-check.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
