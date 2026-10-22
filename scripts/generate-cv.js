@@ -44,63 +44,63 @@ const doc = new PDFDocument({
 // --- helpers ----------------------------------------------------------------
 
 function section(title) {
-  doc.moveDown(0.6)
-  doc.font('Helvetica-Bold').fontSize(10).fillColor(ACCENT).text(title.toUpperCase())
-  doc.moveDown(0.16)
+  doc.moveDown(0.8)
+  doc.font('Helvetica-Bold').fontSize(10.8).fillColor(ACCENT).text(title.toUpperCase())
+  doc.moveDown(0.18)
   doc.moveTo(MARGIN, doc.y)
     .lineTo(PAGE_W - MARGIN, doc.y)
     .strokeColor(RULE)
     .lineWidth(0.7)
     .stroke()
-  doc.moveDown(0.38)
+  doc.moveDown(0.48)
 }
 
-function paragraph(str, size = 10) {
+function paragraph(str, size = 10.5) {
   doc.font('Helvetica').fontSize(size).fillColor(BODY)
-  doc.text(str, MARGIN, doc.y, { width: CONTENT_W, lineGap: 1.9 })
+  doc.text(str, MARGIN, doc.y, { width: CONTENT_W, lineGap: 2.3 })
 }
 
 function bullet(str) {
-  doc.font('Helvetica').fontSize(10).fillColor(BODY)
-  doc.text(`-  ${str}`, MARGIN + 10, doc.y, { width: CONTENT_W - 10, lineGap: 1.7 })
-  doc.moveDown(0.18)
+  doc.font('Helvetica').fontSize(10.5).fillColor(BODY)
+  doc.text(`-  ${str}`, MARGIN + 10, doc.y, { width: CONTENT_W - 10, lineGap: 2.2 })
+  doc.moveDown(0.24)
 }
 
 // A skills bullet with the category in bold, so a recruiter skimming the page
 // can find a category without reading every line. The text is still one linear
 // string for an ATS; only the weight changes.
 function skill(label, items) {
-  doc.font('Helvetica').fontSize(10).fillColor(BODY)
+  doc.font('Helvetica').fontSize(10.5).fillColor(BODY)
   doc.text('-  ', MARGIN + 10, doc.y, { continued: true, width: CONTENT_W - 10 })
   doc.font('Helvetica-Bold').fillColor(INK).text(`${label}: `, { continued: true })
-  doc.font('Helvetica').fillColor(BODY).text(items, { lineGap: 1.7 })
-  doc.moveDown(0.18)
+  doc.font('Helvetica').fillColor(BODY).text(items, { lineGap: 2.2 })
+  doc.moveDown(0.24)
 }
 
 // Title on its own line, then employer, location and dates on the next - linear
 // text, so an ATS reads the role before the dates rather than beside them.
 function role({ title, company, location, dates, points }) {
-  doc.font('Helvetica-Bold').fontSize(10.6).fillColor(INK)
+  doc.font('Helvetica-Bold').fontSize(11).fillColor(INK)
   doc.text(title, MARGIN, doc.y, { width: CONTENT_W })
-  doc.moveDown(0.06)
-  doc.font('Helvetica').fontSize(9).fillColor(MUTED)
+  doc.moveDown(0.08)
+  doc.font('Helvetica').fontSize(9.2).fillColor(MUTED)
   doc.text(`${company}, ${location}  |  ${dates}`, MARGIN, doc.y, { width: CONTENT_W })
-  doc.moveDown(0.2)
+  doc.moveDown(0.25)
   for (const point of points) bullet(point)
-  doc.moveDown(0.3)
+  doc.moveDown(0.42)
 }
 
 // --- header -----------------------------------------------------------------
 
-doc.font('Helvetica-Bold').fontSize(24).fillColor(INK)
+doc.font('Helvetica-Bold').fontSize(25).fillColor(INK)
 doc.text(profile.name.toUpperCase(), MARGIN, doc.y, { width: CONTENT_W })
 
 doc.moveDown(0.12)
-doc.font('Helvetica-Bold').fontSize(10.4).fillColor(ACCENT)
+doc.font('Helvetica-Bold').fontSize(10.6).fillColor(ACCENT)
 doc.text('WordPress Developer & Web Hosting Specialist', MARGIN, doc.y, { width: CONTENT_W })
 
-doc.moveDown(0.28)
-doc.font('Helvetica').fontSize(9).fillColor(MUTED)
+doc.moveDown(0.3)
+doc.font('Helvetica').fontSize(9.2).fillColor(MUTED)
 doc.text(`${profile.email}  |  ${profile.phone}  |  ${profile.location}`, MARGIN, doc.y, {
   width: CONTENT_W,
   lineGap: 1,
