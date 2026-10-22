@@ -86,14 +86,23 @@ check('<html lang> set', /<html[^>]*\slang="[a-z-]+"/i.test(html))
 
 const title = decode(html.match(/<title>([^<]*)<\/title>/)?.[1]?.trim())
 check('title present', !!title)
-check('title length 30-65', !!title && title.length >= 30 && title.length <= 65, `length ${title?.length}`)
+// House rule: the title is measured on decoded text and stays under 60.
+check('title under 60 chars', !!title && title.length <= 60, `length ${title?.length}`)
 
 const desc = decode(html.match(/<meta\s+name="description"\s+content="([^"]*)"/)?.[1])
 check('meta description present', !!desc)
+// House rule: under 155, measured on decoded text.
 check(
-  'description length 70-160',
-  !!desc && desc.length >= 70 && desc.length <= 160,
+  'description under 155 chars',
+  !!desc && desc.length >= 70 && desc.length <= 155,
   `length ${desc?.length}`,
+)
+
+// House rule: no dashes of any kind in visible copy. Checked on the two fields
+// that are pure SEO copy; body copy is reviewed separately.
+check(
+  'no dashes in title or description',
+  ![title, desc].some((text) => text && /[-–—]/.test(text)),
 )
 
 const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/)?.[1]

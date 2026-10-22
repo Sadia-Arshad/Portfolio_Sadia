@@ -340,6 +340,9 @@ export const projects = {
       { name: 'austeriosmart-up.com', note: 'AI automated trading - 24/7 strategies, live signals', url: 'https://austeriosmart-up.com/' },
       { name: 'fels-wertburgai.com', note: 'AI crypto research assistant - Australia', url: 'https://fels-wertburgai.com/' },
       { name: 'keen-accruvance.com', note: 'AI crypto trading platform & signals', url: 'https://keen-accruvance.com/' },
+      { name: 'borsbryggeai.com', note: 'AI trading platform for Norway, Norwegian market', url: 'https://borsbryggeai.com/' },
+      { name: 'cortextrade-dk.net', note: 'AI trading platform for Denmark, crypto, forex and stocks', url: 'https://cortextrade-dk.net/' },
+      { name: 'krelixbardenai.com', note: 'AI market analysis for Germany, German market', url: 'https://krelixbardenai.com/' },
     ],
   },
 }
