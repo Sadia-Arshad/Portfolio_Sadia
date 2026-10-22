@@ -12,6 +12,22 @@
       the <loc> in public/sitemap.xml.
     -->
 
+    <!--
+      Analytics and site verification. These sit above the page metadata on
+      purpose: scripts/prerender.mjs rebuilds the body, not the head, so
+      anything global belongs here.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHWVNJF9Y1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-SHWVNJF9Y1');
+    </script>
+    <meta name="google-site-verification" content="iUC-djGSwB98IpkvNO15sN9B0idbMQno5ZTApHrbkzo" />
+
     <!-- Primary meta -->
     <title>Sadia Arshad | WordPress Developer &amp; Hosting Specialist</title>
     <meta
