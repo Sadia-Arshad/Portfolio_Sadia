@@ -37,7 +37,7 @@ export default function Contact() {
     },
     {
       label: 'Office GitHub',
-      value: 'github.com/ZeeTech-Pvt-Ltd',
+      value: 'github.com/sadiaa-lab',
       href: profile.officeGithub,
       icon: Building2,
     },
