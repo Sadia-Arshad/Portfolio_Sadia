@@ -10,11 +10,16 @@ describe('Navbar', () => {
     }
   })
 
-  it('links Download CV to the real PDF', () => {
+  it('links View CV to the real PDF, opening it in a new tab', () => {
     render(<Navbar />)
-    const cv = screen.getAllByRole('link', { name: /Download CV/i })
+    const cv = screen.getAllByRole('link', { name: /View CV/i })
     expect(cv.length).toBeGreaterThan(0)
-    for (const el of cv) expect(el).toHaveAttribute('href', '/Sadia-Arshad-CV.pdf')
+    for (const el of cv) {
+      expect(el).toHaveAttribute('href', '/Sadia-Arshad-CV.pdf')
+      expect(el).toHaveAttribute('target', '_blank')
+      // No `download` attribute: the PDF should open in the browser, not save.
+      expect(el).not.toHaveAttribute('download')
+    }
   })
 
   it('toggles the mobile menu via the hamburger button', () => {

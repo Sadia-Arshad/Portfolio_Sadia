@@ -1,8 +1,9 @@
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
+import { Building2, Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 import { footer, profile } from '../data/portfolio.js'
 
 const socials = [
   { label: 'GitHub', href: profile.github, icon: Github },
+  { label: 'Office GitHub', href: profile.officeGithub, icon: Building2 },
   { label: 'LinkedIn', href: profile.linkedin, icon: Linkedin },
   { label: 'Email', href: `mailto:${profile.email}`, icon: Mail },
 ]

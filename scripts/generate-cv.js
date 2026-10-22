@@ -6,7 +6,7 @@
 //
 //   npm run build:cv
 //
-// The output PDF is what the "Download CV" button serves. Edit the content in
+// The output PDF is what the "View CV" button opens. Edit the content in
 // src/data/portfolio.js (or replace the generated file with your own design)
 // and re-run the script.
 // ============================================================================
@@ -86,6 +86,13 @@ doc.moveDown(0.5)
 doc.font('Helvetica').fontSize(8.5).fillColor(GRAY)
 doc.text(
   `${profile.email}  |  ${profile.phone}  |  ${profile.location}  |  ${profile.linkedin.replace('https://', '')}`,
+  MARGIN,
+  doc.y,
+  { width: CONTENT_W, lineGap: 1 },
+)
+doc.moveDown(0.25)
+doc.text(
+  `GitHub: ${profile.github.replace('https://', '')}  |  Office GitHub: ${profile.officeGithub.replace('https://', '')}`,
   MARGIN,
   doc.y,
   { width: CONTENT_W, lineGap: 1 },

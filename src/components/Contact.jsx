@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Building2, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading.jsx'
 import { contact, profile } from '../data/portfolio.js'
@@ -34,6 +34,12 @@ export default function Contact() {
       value: 'github.com/Sadia-Arshad',
       href: profile.github,
       icon: Github,
+    },
+    {
+      label: 'Office GitHub',
+      value: 'github.com/ZeeTech-Pvt-Ltd',
+      href: profile.officeGithub,
+      icon: Building2,
     },
     { label: 'Phone', value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}`, icon: Phone },
     { label: 'Location', value: profile.location, href: undefined, icon: MapPin },
@@ -77,7 +83,7 @@ export default function Contact() {
                       {link.href && link.href !== '#' ? (
                         <a
                           href={link.href}
-                          {...(link.label === 'LinkedIn' || link.label === 'GitHub'
+                          {...(link.href?.startsWith('http')
                             ? { target: '_blank', rel: 'noopener noreferrer' }
                             : {})}
                           className="block rounded-lg transition-colors hover:bg-white/[0.04]"

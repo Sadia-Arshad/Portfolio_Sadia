@@ -28,6 +28,7 @@ export const profile = {
   location: 'Lahore, Pakistan',
   linkedin: 'https://www.linkedin.com/in/sadia-arshad-ch',
   github: 'https://github.com/Sadia-Arshad',
+  officeGithub: 'https://github.com/ZeeTech-Pvt-Ltd',
   cvPath: '/Sadia-Arshad-CV.pdf',
 
   yearsExperience: '5+',

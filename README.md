@@ -15,7 +15,7 @@ Highlights:
 - **Single page** with anchor navigation (no router needed - deploys anywhere safely).
 - **Scroll-spy navbar** with a working mobile hamburger menu.
 - **Service-level metrics band** (Ticket SLA · Sites Optimized · Malware Cleanups · Uptime) between About and Skills - edit values in `src/data/portfolio.js` → `serviceStats`.
-- **Download CV** button that serves `public/Sadia-Arshad-CV.pdf`.
+- **View CV** button that opens `public/Sadia-Arshad-CV.pdf` in the browser (no forced download).
 - **Contact form** that opens the visitor's email app (no backend).
 - All content lives in **`src/data/portfolio.js`** so you can edit it in one place.
 - SEO meta, Open Graph and Twitter card tags included.
@@ -117,7 +117,9 @@ Every push to `main` now deploys automatically. (Optional: set a custom domain u
 
 ## 8. How to Replace the CV
 
-The **Download CV** button serves `public/Sadia-Arshad-CV.pdf`.
+The **View CV** button opens `public/Sadia-Arshad-CV.pdf` in the browser. The link
+carries no `download` attribute and the file is served as `application/pdf`, so
+the browser's own viewer displays it instead of saving it to Downloads.
 
 **Option A - replace the file directly (easiest):**
 Delete `public/Sadia-Arshad-CV.pdf` and drop in your own PDF with the same filename. Nothing else changes.
@@ -171,7 +173,7 @@ Buttons stay visibly **disabled** until you add a real URL - the `#` is only a t
 
 ```
 public/
-  Sadia-Arshad-CV.pdf          ← Download CV target
+  Sadia-Arshad-CV.pdf          ← View CV target
   favicon.svg                  ← vector icon (browsers that support it)
   apple-touch-icon.png         ← npm run build:icons
   icon-192.png  icon-512.png   ← npm run build:icons

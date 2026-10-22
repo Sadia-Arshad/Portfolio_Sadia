@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Download, Menu, X } from 'lucide-react'
+import { FileText, Menu, X } from 'lucide-react'
 import { navLinks, profile } from '../data/portfolio.js'
 
 /**
  * Navbar - sticky header with scroll-spy, a mobile hamburger menu and a
- * Download CV button pointing to the PDF in /public.
+ * View CV button pointing to the PDF in /public.
+ *
+ * The CV link has no `download` attribute on purpose: the PDF opens in the
+ * browser's viewer so a visitor can read it without it landing in Downloads.
  */
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -87,10 +90,15 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          {/* Download CV */}
-          <a href={profile.cvPath} download className="btn-primary hidden sm:inline-flex">
-            <Download size={16} aria-hidden="true" />
-            Download CV
+          {/* View CV - opens the PDF in a new tab, no download attribute */}
+          <a
+            href={profile.cvPath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary hidden sm:inline-flex"
+          >
+            <FileText size={16} aria-hidden="true" />
+            View CV
           </a>
 
           {/* Mobile menu toggle */}
@@ -131,9 +139,15 @@ export default function Navbar() {
             </li>
           ))}
           <li className="mt-2 border-t border-white/10 pt-4">
-            <a href={profile.cvPath} download className="btn-primary w-full" onClick={() => setOpen(false)}>
-              <Download size={16} aria-hidden="true" />
-              Download CV
+            <a
+              href={profile.cvPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full"
+              onClick={() => setOpen(false)}
+            >
+              <FileText size={16} aria-hidden="true" />
+              View CV
             </a>
           </li>
         </ul>
