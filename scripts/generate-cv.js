@@ -1,14 +1,12 @@
 // ============================================================================
-// CV generator - one page
+// CV generator - one page PDF
 // ----------------------------------------------------------------------------
 // Builds public/Sadia-Arshad-CV.pdf, the file the portfolio's "View CV" button
 // opens. It is deliberately a single A4 page and a single column of linear
 // text, so applicant tracking systems parse it in the order it reads.
 //
-// Contact details and the role facts come from src/data/portfolio.js. The
-// bullet points are a condensed subset of that file's experience entries - the
-// website has room for detail, one page does not - so update both when a role
-// changes.
+// All copy lives in scripts/cv-content.mjs, shared with the Word generator so
+// the two documents cannot drift apart.
 //
 //   npm run build:cv
 // ============================================================================
@@ -17,10 +15,11 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import PDFDocument from 'pdfkit'
-import { profile } from '../src/data/portfolio.js'
+import { cv } from './cv-content.mjs'
 
-// Dark text on white, with one deep teal accent for structure. Everything here
-// is chosen for contrast: no light greens or greys that fade on a printout.
+// Dark text on white, with one deep teal accent for structure and links.
+// Everything here is chosen for contrast: no light greens or greys that fade
+// on a printout.
 const INK = '#0B1220'
 const BODY = '#1E293B'
 const MUTED = '#475569'
@@ -36,23 +35,23 @@ const CONTENT_W = PAGE_W - MARGIN * 2
 
 const doc = new PDFDocument({
   size: 'A4',
-  margins: { top: 34, bottom: 30, left: MARGIN, right: MARGIN },
+  margins: { top: 30, bottom: 28, left: MARGIN, right: MARGIN },
   bufferPages: true,
-  info: { Title: 'Sadia Arshad - CV', Author: profile.name },
+  info: { Title: 'Sadia Arshad - CV', Author: cv.name },
 })
 
 // --- helpers ----------------------------------------------------------------
 
 function section(title) {
-  doc.moveDown(0.8)
+  doc.moveDown(0.46)
   doc.font('Helvetica-Bold').fontSize(10.8).fillColor(ACCENT).text(title.toUpperCase())
-  doc.moveDown(0.18)
+  doc.moveDown(0.12)
   doc.moveTo(MARGIN, doc.y)
     .lineTo(PAGE_W - MARGIN, doc.y)
     .strokeColor(RULE)
     .lineWidth(0.7)
     .stroke()
-  doc.moveDown(0.48)
+  doc.moveDown(0.24)
 }
 
 function paragraph(str, size = 10.5) {
@@ -62,8 +61,8 @@ function paragraph(str, size = 10.5) {
 
 function bullet(str) {
   doc.font('Helvetica').fontSize(10.5).fillColor(BODY)
-  doc.text(`-  ${str}`, MARGIN + 10, doc.y, { width: CONTENT_W - 10, lineGap: 2.2 })
-  doc.moveDown(0.24)
+  doc.text(`-  ${str}`, MARGIN + 10, doc.y, { width: CONTENT_W - 10, lineGap: 1.8 })
+  doc.moveDown(0.1)
 }
 
 // A skills bullet with the category in bold, so a recruiter skimming the page
@@ -73,123 +72,97 @@ function skill(label, items) {
   doc.font('Helvetica').fontSize(10.5).fillColor(BODY)
   doc.text('-  ', MARGIN + 10, doc.y, { continued: true, width: CONTENT_W - 10 })
   doc.font('Helvetica-Bold').fillColor(INK).text(`${label}: `, { continued: true })
-  doc.font('Helvetica').fillColor(BODY).text(items, { lineGap: 2.2 })
-  doc.moveDown(0.24)
+  doc.font('Helvetica').fillColor(BODY).text(items, { lineGap: 1.8 })
+  doc.moveDown(0.1)
+}
+
+// Renders one line made of segments, each optionally a clickable URL. PDFKit's
+// `link` paints a rectangle over the text box, so the width of every segment is
+// measured before it is drawn.
+function linkRow(y, parts, { size = 9.2, color = MUTED } = {}) {
+  let x = MARGIN
+  for (const part of parts) {
+    doc
+      .font(part.bold ? 'Helvetica-Bold' : 'Helvetica')
+      .fontSize(size)
+      .fillColor(part.url ? ACCENT : part.color || color)
+    const width = doc.widthOfString(part.text)
+    doc.text(part.text, x, y, { lineBreak: false })
+    if (part.url) doc.link(x, y - 1, width, size + 3, part.url)
+    x += width
+  }
+  // `lineBreak: false` deliberately leaves doc.y untouched, so advance it here
+  // or the next block draws straight on top of this line.
+  doc.y = y + size * 1.35
 }
 
 // Title on its own line, then employer, location and dates on the next - linear
 // text, so an ATS reads the role before the dates rather than beside them.
 function role({ title, company, location, dates, points }) {
-  doc.font('Helvetica-Bold').fontSize(11).fillColor(INK)
+  doc.font('Helvetica-Bold').fontSize(11.2).fillColor(INK)
   doc.text(title, MARGIN, doc.y, { width: CONTENT_W })
-  doc.moveDown(0.08)
-  doc.font('Helvetica').fontSize(9.2).fillColor(MUTED)
+  doc.moveDown(0.07)
+  doc.font('Helvetica').fontSize(9.3).fillColor(MUTED)
   doc.text(`${company}, ${location}  |  ${dates}`, MARGIN, doc.y, { width: CONTENT_W })
-  doc.moveDown(0.25)
+  doc.moveDown(0.16)
   for (const point of points) bullet(point)
-  doc.moveDown(0.42)
+  doc.moveDown(0.24)
+}
+
+function project({ name, stack, live, repo, contribution }) {
+  linkRow(doc.y, [
+    { text: name, bold: true, color: INK },
+    { text: `  |  ${stack}  |  `, color: MUTED },
+    { text: live.label, url: live.url },
+    { text: '  |  ' },
+    { text: repo.label, url: repo.url },
+  ])
+  doc.moveDown(0.52)
+  doc.font('Helvetica').fontSize(10).fillColor(BODY)
+  doc.text(contribution, MARGIN, doc.y, { width: CONTENT_W, lineGap: 2.0 })
+  doc.moveDown(0.24)
 }
 
 // --- header -----------------------------------------------------------------
 
-doc.font('Helvetica-Bold').fontSize(25).fillColor(INK)
-doc.text(profile.name.toUpperCase(), MARGIN, doc.y, { width: CONTENT_W })
+doc.font('Helvetica-Bold').fontSize(24).fillColor(INK)
+doc.text(cv.name, MARGIN, doc.y, { width: CONTENT_W })
 
-doc.moveDown(0.12)
-doc.font('Helvetica-Bold').fontSize(10.6).fillColor(ACCENT)
-doc.text('WordPress Developer & Web Hosting Specialist', MARGIN, doc.y, { width: CONTENT_W })
+doc.moveDown(0.1)
+doc.font('Helvetica-Bold').fontSize(10.4).fillColor(ACCENT)
+doc.text(cv.title, MARGIN, doc.y, { width: CONTENT_W })
 
-doc.moveDown(0.3)
-doc.font('Helvetica').fontSize(9.2).fillColor(MUTED)
-doc.text(`${profile.email}  |  ${profile.phone}  |  ${profile.location}`, MARGIN, doc.y, {
-  width: CONTENT_W,
-  lineGap: 1,
-})
-doc.moveDown(0.08)
-doc.text(
-  `${profile.linkedin.replace('https://', '')}  |  ${profile.github.replace('https://', '')}  |  Office GitHub: ${profile.officeGithub.replace('https://', '')}`,
-  MARGIN,
-  doc.y,
-  { width: CONTENT_W, lineGap: 1 },
-)
+doc.moveDown(0.24)
+for (const line of cv.contactLines) {
+  linkRow(doc.y, line)
+  doc.moveDown(0.45)
+}
+doc.moveDown(-0.1)
 
 // --- professional summary ----------------------------------------------------
 
 section('Professional Summary')
-paragraph(
-  'WordPress Developer and Web Hosting Specialist with 5+ years building, maintaining and troubleshooting business websites, eCommerce stores and landing pages. Hands-on across WordPress, WooCommerce, Elementor, cPanel, DNS, SSL and malware removal, with current work in React, Next.js and AI-assisted development.',
-)
+paragraph(cv.summary)
 
 // --- core skills -------------------------------------------------------------
 
 section('Core Skills')
-skill(
-  'WordPress & eCommerce',
-  'WordPress, WooCommerce, Elementor, Elementor Pro, theme and plugin management, website migration, backups.',
-)
-skill('Hosting & Domains', 'cPanel, SPanel, Linux/Ubuntu, DNS records, domain management, SSL, Cloudflare.')
-skill(
-  'Security & Support',
-  'malware investigation and removal, Wordfence, server hardening, PHP error troubleshooting, resource and CPU investigations.',
-)
-skill(
-  'Frontend & AI',
-  'HTML, CSS, JavaScript, React, Next.js, Vite, Tailwind CSS, Git/GitHub, AI-assisted development.',
-)
+for (const [label, items] of cv.skills) skill(label, items)
 
 // --- experience --------------------------------------------------------------
 
 section('Professional Experience')
-
-role({
-  title: 'WordPress Developer & Linux Server Administrator',
-  company: 'Zeetech (Pvt.) Ltd',
-  location: 'Lahore, Pakistan',
-  dates: 'Oct 2023 - Present',
-  points: [
-    'Build and maintain WordPress sites for trading, AI education and health clients across the UAE and Europe.',
-    'Administer Linux servers via SSH, investigate PHP and Apache error logs and resolve live production incidents.',
-    'Remove malware and code injection, then restore and harden server security.',
-    'Manage DNS records, SSL installs and renewals, cPanel hosting and uptime monitoring.',
-  ],
-})
-
-role({
-  title: 'WordPress Developer & Server Manager',
-  company: 'Freelance',
-  location: 'Remote, Pakistan',
-  dates: '2022 - Present',
-  points: [
-    'Deliver complete WordPress builds for clients in Switzerland, the USA and Pakistan.',
-    'Manage hosting independently, covering SSH, cPanel, DNS, SSL and post-launch maintenance.',
-    'Resolve live emergencies including code injection, DNS failures and downtime recovery.',
-  ],
-})
-
-role({
-  title: 'WordPress Developer',
-  company: 'Enfotrix (Pvt.) Ltd',
-  location: 'Sargodha, Pakistan',
-  dates: 'Sep 2021 - Sep 2023',
-  points: [
-    'Built 10+ WordPress websites across eCommerce, health and creative industries.',
-    'Developed WooCommerce stores with payment gateway integration.',
-    'Improved Google PageSpeed scores to 90-100 through server-side optimisation and caching.',
-  ],
-})
+for (const item of cv.roles) role(item)
 
 // --- selected projects -------------------------------------------------------
 
 section('Selected Projects')
-bullet('Zephgain: pre-rendered React site for an AI trading platform, with per-route SEO and structured data.')
-bullet('AI Pro App: multi-page React build for an AI crypto research platform, with static pre-rendering.')
-bullet('TraderAI: React and Vite trading dashboard shipped to production on Render.')
+for (const item of cv.projects) project(item)
 
 // --- education ---------------------------------------------------------------
 
 section('Education & Certification')
-bullet('BS Computer Science (BSCS), completed 2022.')
-bullet('DevOps Certificate, covering Linux, Git and deployment workflows.')
+for (const line of cv.education) bullet(line)
 
 // --- write -------------------------------------------------------------------
 
