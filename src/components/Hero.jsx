@@ -39,7 +39,7 @@ export default function Hero() {
         className="pointer-events-none absolute -bottom-48 -left-40 h-[30rem] w-[30rem] rounded-full bg-sky-500/[0.04] blur-[120px]"
       />
 
-      <div className="container-page relative grid items-center gap-12 py-20 sm:py-24 lg:grid-cols-12 lg:gap-8 lg:py-28">
+      <div className="container-page relative grid grid-cols-1 items-center gap-12 py-20 sm:py-24 lg:grid-cols-12 lg:gap-8 lg:py-28">
         {/* Left - copy */}
         <div className="lg:col-span-7">
           <motion.p

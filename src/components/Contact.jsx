@@ -53,7 +53,7 @@ export default function Contact() {
       <div className="container-page">
         <SectionHeading kicker={contact.kicker} heading={contact.heading} sub={contact.sub} />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-5 lg:gap-14">
+        <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-14">
           {/* Contact details */}
           <Reveal className="lg:col-span-2">
             <div className="card p-6 sm:p-7">
@@ -105,7 +105,7 @@ export default function Contact() {
           {/* Contact form */}
           <Reveal delay={0.1} className="lg:col-span-3">
             <form onSubmit={handleSubmit} className="card p-6 sm:p-7">
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-slate-300">
                     Name

@@ -55,7 +55,7 @@ export default function Experience() {
 
                     <p className="mt-4 text-sm leading-relaxed text-muted">{job.summary}</p>
 
-                    <ul className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                    <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
                       {job.points.map((point) => (
                         <li key={point} className="flex items-start gap-2 text-sm leading-relaxed text-slate-300">
                           <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-accent" />

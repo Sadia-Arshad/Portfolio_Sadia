@@ -36,7 +36,7 @@ export default function Projects() {
         <SectionHeading kicker={projects.kicker} heading={projects.heading} sub={projects.sub} />
 
         {/* Main project cards */}
-        <div className={`mt-14 grid gap-5 ${projectCols}`}>
+        <div className={`mt-14 grid grid-cols-1 gap-5 ${projectCols}`}>
           {projects.items.map((project, i) => (
             <Reveal key={project.name} delay={i * 0.08}>
               <article className="card flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-card-hover">
@@ -82,7 +82,11 @@ export default function Projects() {
               </div>
             </div>
 
-            <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+            {/* grid-cols-1 is explicit: the bare `grid` utility leaves an auto
+                track, which grows to the longest domain name and pushes the list
+                past the viewport below the sm breakpoint. grid-cols-1 gives the
+                track minmax(0, 1fr), so truncation works as intended. */}
+            <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
               {projects.liveSites.sites.map((site) => (
                 <li key={site.name}>
                   <a

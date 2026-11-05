@@ -8,7 +8,7 @@ export default function About() {
       <div className="container-page">
         <SectionHeading kicker={about.kicker} heading={about.heading} />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Narrative + quick facts */}
           <Reveal>
             <div className="space-y-5">

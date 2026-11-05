@@ -78,7 +78,7 @@ export default function Skills() {
       <div className="container-page">
         <SectionHeading kicker={skills.kicker} heading={skills.heading} sub={skills.sub} align="center" />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skills.groups.map((group, i) => {
             const Icon = skillIcons[group.icon] ?? Layers
             const tone = tones[group.tone] ?? tones[fallbackTone]

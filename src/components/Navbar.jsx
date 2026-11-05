@@ -115,11 +115,13 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu. The open height is bounded by the viewport rather than a
+          fixed 384px, so the View CV button at the bottom is never clipped on a
+          short phone. If the list still overflows it scrolls. */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-b border-white/10 bg-ink/95 backdrop-blur-md transition-[max-height,opacity] duration-300 lg:hidden ${
-          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        className={`overflow-y-auto overflow-x-hidden border-b border-white/10 bg-ink/95 backdrop-blur-md transition-[max-height,opacity] duration-300 lg:hidden ${
+          open ? 'max-h-[calc(100vh-4rem)] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <ul className="container-page flex flex-col gap-1 py-4">
