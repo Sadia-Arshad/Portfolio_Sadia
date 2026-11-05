@@ -40,6 +40,7 @@ export const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -404,6 +405,32 @@ export const services = {
       description: 'Modern, responsive frontends with React, Vite and Tailwind CSS - deploy-ready on Vercel.',
       points: ['React + Vite applications', 'Tailwind CSS UI', 'Deployment to Vercel / Render'],
     },
+  ],
+}
+
+// ----------------------------------------------------------------------------
+// Client Reviews
+// ----------------------------------------------------------------------------
+// Reviews are stored in Supabase and only appear here once approved. The
+// section and form copy lives here with the rest of the site text.
+export const reviews = {
+  kicker: 'Client Reviews',
+  heading: 'What clients say after launch.',
+  sub: 'Feedback from people I have worked with. Every review is read before it appears here.',
+  empty: 'No reviews yet. If we have worked together, yours would be the first.',
+  formHead: 'Leave a review',
+  formNote: 'Reviews are published after approval. Your email address is not collected.',
+  success: 'Thank you. Your review has been sent and will appear once it is approved.',
+
+  // Used by the form's project type select, so the value is saved verbatim.
+  projectTypes: [
+    'WordPress Website',
+    'WooCommerce Store',
+    'Website Migration',
+    'Hosting & DNS',
+    'Website Security',
+    'React / Next.js Development',
+    'Other',
   ],
 }
 

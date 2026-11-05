@@ -222,3 +222,90 @@ Still open:
 - [ ] Bump `<lastmod>` in `public/sitemap.xml` whenever the page content changes.
 - [ ] Optionally remove the public **phone** number if you prefer not to show it.
 - [ ] Re-run `npm run build:icons` if you ever change the monogram in `favicon.svg`.
+
+## 13. Client Reviews (Supabase)
+
+The **Client Reviews** section reads approved reviews from Supabase and lets visitors
+submit new ones. Nothing appears publicly until a review is approved.
+
+### How it fits the build
+
+Reviews are fetched in a `useEffect`, so they are **never** fetched during the
+pre-render step in `scripts/prerender.mjs`. The shipped HTML contains the section
+heading and the form; the list fills in after the page hydrates.
+
+There is no Supabase SDK. `src/lib/supabase.js` calls PostgREST with `fetch`, which
+keeps 30-40 KB out of the bundle. Security is entirely Row Level Security in the
+database, because the publishable key is public by design.
+
+### Environment variables
+
+Local: `.env.local` (gitignored by the `*.local` rule):
+
+```
+VITE_SUPABASE_URL=https://kmounixinbucmmywlwwt.supabase.co/rest/v1/
+VITE_SUPABASE_ANON_KEY=sb_publishable_...
+```
+
+Vercel: Project -> Settings -> Environment Variables, add both for **Production,
+Preview and Development**, then redeploy. Vite inlines `VITE_*` values at build
+time, so changing the variable alone does not update an existing deployment.
+
+Never add a service-role or secret key. Every `VITE_*` value ships in the public
+bundle.
+
+### Required database setup
+
+**1. `project_type` column.** The form collects a project type, but the current
+table does not have the column. Add it:
+
+```sql
+alter table public.reviews add column if not exists project_type text;
+```
+
+Until this runs, the form still saves the review minus the project type, and logs
+a console warning.
+
+**2. Insert policy.** As of this build, anonymous submissions are rejected with
+`42501 new row violates row-level security policy`. Inspect the policies:
+
+```sql
+select policyname, cmd, roles, qual, with_check
+from pg_policies
+where schemaname = 'public' and tablename = 'reviews';
+```
+
+The insert policy needs `to anon` and a `with check` that accepts pending rows:
+
+```sql
+create policy "public can submit pending reviews"
+  on public.reviews
+  for insert
+  to anon
+  with check (status = 'pending');
+```
+
+If a policy with that name exists but is scoped to `authenticated`, drop it and
+recreate it as above.
+
+**3. Verify the Data API is on.** Supabase can disable the Data API, and the
+failure is easy to misread as a code bug:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" \
+  -H "apikey: $VITE_SUPABASE_ANON_KEY" \
+  "$VITE_SUPABASE_URL/reviews?select=id&limit=1"
+```
+
+`200` means the API is up. Anything else means the Data API is disabled under
+Project Settings -> API.
+
+### Approving reviews
+
+Until an admin page exists, approve in Supabase Studio -> Table Editor -> `reviews`:
+
+```sql
+update public.reviews
+set status = 'approved', approved_at = now()
+where id = '<review-id>';
+```

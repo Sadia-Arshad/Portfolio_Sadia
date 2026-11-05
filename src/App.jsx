@@ -5,6 +5,7 @@ import Stats from './components/Stats.jsx'
 import Skills from './components/Skills.jsx'
 import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
+import Reviews from './components/Reviews.jsx'
 import Services from './components/Services.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
@@ -31,6 +32,7 @@ export default function App() {
         <Skills />
         <Experience />
         <Projects />
+        <Reviews />
         <Services />
         <Contact />
       </main>
