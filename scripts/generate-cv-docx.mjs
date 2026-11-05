@@ -139,8 +139,10 @@ const run = (text, { bold = false, size = 21, color = BODY, underline = false } 
     text,
   )}</w:t></w:r>`
 
-const linkRun = (text, url, { size = 18, color = ACCENT } = {}) =>
-  `<w:hyperlink r:id="${relId(url)}" w:history="1"><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:color w:val="${color}"/><w:u w:val="single"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/></w:rPr><w:t xml:space="preserve">${esc(
+const linkRun = (text, url, { size = 18, color = ACCENT, bold = false } = {}) =>
+  `<w:hyperlink r:id="${relId(url)}" w:history="1"><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>${
+    bold ? '<w:b/>' : ''
+  }<w:color w:val="${color}"/><w:u w:val="single"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/></w:rPr><w:t xml:space="preserve">${esc(
     text,
   )}</w:t></w:r></w:hyperlink>`
 
@@ -164,12 +166,12 @@ const bullet = (runs, extra = {}) =>
 const body = []
 
 body.push(para(run(cv.name, { bold: true, size: 48, color: INK }), { after: 0, line: 240 }))
-body.push(para(run(cv.title, { bold: true, size: 21, color: ACCENT }), { after: 60 }))
+body.push(para(run(cv.title, { bold: true, size: 21, color: INK }), { after: 60 }))
 
 for (const line of cv.contactLines) {
   const runs = line.map((part) =>
     part.url
-      ? linkRun(part.text, part.url)
+      ? linkRun(part.text, part.url, { color: INK, bold: true })
       : run(part.text, { size: 18, color: MUTED }),
   )
   body.push(para(runs.join(''), { after: 12 }))

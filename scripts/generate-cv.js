@@ -44,7 +44,11 @@ const doc = new PDFDocument({
 
 function section(title) {
   doc.moveDown(0.46)
-  doc.font('Helvetica-Bold').fontSize(10.8).fillColor(ACCENT).text(title.toUpperCase())
+  doc
+    .font('Helvetica-Bold')
+    .fontSize(10.8)
+    .fillColor(ACCENT)
+    .text(title.toUpperCase(), MARGIN, doc.y, { width: CONTENT_W, align: 'left' })
   doc.moveDown(0.12)
   doc.moveTo(MARGIN, doc.y)
     .lineTo(PAGE_W - MARGIN, doc.y)
@@ -79,21 +83,25 @@ function skill(label, items) {
 // Renders one line made of segments, each optionally a clickable URL. PDFKit's
 // `link` paints a rectangle over the text box, so the width of every segment is
 // measured before it is drawn.
-function linkRow(y, parts, { size = 9.2, color = MUTED } = {}) {
+function linkRow(y, parts, { size = 9.2, color = MUTED, linkColor = ACCENT, linkBold = false } = {}) {
   let x = MARGIN
   for (const part of parts) {
+    const isLink = Boolean(part.url)
     doc
-      .font(part.bold ? 'Helvetica-Bold' : 'Helvetica')
+      .font(part.bold || (isLink && linkBold) ? 'Helvetica-Bold' : 'Helvetica')
       .fontSize(size)
-      .fillColor(part.url ? ACCENT : part.color || color)
+      .fillColor(isLink ? linkColor : part.color || color)
     const width = doc.widthOfString(part.text)
     doc.text(part.text, x, y, { lineBreak: false })
-    if (part.url) doc.link(x, y - 1, width, size + 3, part.url)
+    if (isLink) doc.link(x, y - 1, width, size + 3, part.url)
     x += width
   }
   // `lineBreak: false` deliberately leaves doc.y untouched, so advance it here
   // or the next block draws straight on top of this line.
   doc.y = y + size * 1.35
+  // doc.text also leaves the cursor at the end of the last segment. Reset it,
+  // or the following section heading starts indented under the contact line.
+  doc.x = MARGIN
 }
 
 // Title on its own line, then employer, location and dates on the next - linear
@@ -129,12 +137,14 @@ doc.font('Helvetica-Bold').fontSize(24).fillColor(INK)
 doc.text(cv.name, MARGIN, doc.y, { width: CONTENT_W })
 
 doc.moveDown(0.1)
-doc.font('Helvetica-Bold').fontSize(10.4).fillColor(ACCENT)
+doc.font('Helvetica-Bold').fontSize(10.4).fillColor(INK)
 doc.text(cv.title, MARGIN, doc.y, { width: CONTENT_W })
 
 doc.moveDown(0.24)
 for (const line of cv.contactLines) {
-  linkRow(doc.y, line)
+  // Header links are black and bold rather than teal. They stay clickable: the
+  // link annotations are added regardless of colour.
+  linkRow(doc.y, line, { linkColor: INK, linkBold: true })
   doc.moveDown(0.45)
 }
 doc.moveDown(-0.1)
