@@ -5,9 +5,9 @@ describe('App', () => {
   it('renders the full page shell', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
-    expect(screen.getByText(/Building Reliable Websites/i)).toBeInTheDocument()
+    expect(screen.getByText(/Building, Managing & Securing Websites/i)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Skip to content/i })).toBeInTheDocument()
-    for (const id of ['about', 'skills', 'experience', 'projects', 'services', 'contact']) {
+    for (const id of ['about', 'skills', 'experience', 'projects', 'frontend', 'services', 'contact']) {
       expect(document.getElementById(id)).toBeInTheDocument()
     }
   })

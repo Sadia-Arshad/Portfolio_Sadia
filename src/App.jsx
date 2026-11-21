@@ -1,12 +1,18 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
-import Stats from './components/Stats.jsx'
 import Skills from './components/Skills.jsx'
 import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
-import Reviews from './components/Reviews.jsx'
+import FrontendProjects from './components/FrontendProjects.jsx'
 import Services from './components/Services.jsx'
+
+// Client Reviews is intentionally not rendered. The Supabase project is
+// reachable and the table has the expected columns, but the insert policy
+// still rejects anonymous submissions with 42501, so the form would show an
+// error to every visitor. The component, its data and the Supabase client are
+// kept intact: fix the RLS policy (README section 13), then re-import <Reviews/>
+// below and restore the nav link.
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -28,11 +34,10 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Stats />
         <Skills />
         <Experience />
         <Projects />
-        <Reviews />
+        <FrontendProjects />
         <Services />
         <Contact />
       </main>

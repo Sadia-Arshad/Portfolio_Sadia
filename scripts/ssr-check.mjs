@@ -17,12 +17,14 @@ try {
   const html = renderToString(React.createElement(App))
   const checks = [
     ['navbar', html.includes('id="mobile-menu"')],
-    ['hero heading', html.includes('Building Reliable Websites')],
+    ['hero heading', html.includes('5+ Years of Experience')],
     ['about', html.includes('id="about"')],
-    ['service stats', html.includes('Ticket SLA') && html.includes('Malware Cleanups')],
     ['skills', html.includes('id="skills"')],
     ['experience', html.includes('id="experience"')],
     ['projects', html.includes('id="projects"')],
+    ['frontend projects', html.includes('id="frontend"')],
+    // Reviews is hidden until the Supabase insert policy is fixed.
+    ['reviews hidden', !html.includes('id="reviews"')],
     ['services', html.includes('id="services"')],
     ['contact', html.includes('id="contact"')],
     ['footer', html.includes('Sadia Arshad. All rights reserved')],

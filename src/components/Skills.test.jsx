@@ -5,13 +5,10 @@ describe('Skills', () => {
   it('renders all skill group titles', () => {
     render(<Skills />)
     for (const title of [
-      'WordPress',
-      'Hosting & Servers',
-      'Domains & DNS',
-      'Security & Performance',
-      'Development',
-      'SEO & Maintenance',
-      'AI / Automation',
+      'WordPress & WooCommerce',
+      'Hosting, DNS & Security',
+      'Additional',
+      'AI-Assisted Development',
     ]) {
       expect(screen.getByRole('heading', { name: title })).toBeInTheDocument()
     }

@@ -11,16 +11,18 @@ export const profile = {
   firstName: 'Sadia',
   monogram: 'SA',
 
-  title: 'WordPress Developer | Web & Hosting Specialist | React & DevOps Enthusiast',
+  title: 'WordPress Developer & Web Hosting Specialist',
 
   // Hero
-  availability: 'Available for Web Development & Technical Projects',
-  heading: 'Building Reliable Websites From Development to Deployment.',
+  availability: 'Available for WordPress and hosting roles in Pakistan, Saudi Arabia and remote teams',
+  // Split into two lines so the second half can carry the accent colour.
+  headingLead: '5+ Years of Experience',
+  headingAccent: 'Building, Managing & Securing Websites.',
   heroText:
-    'WordPress Developer with 5+ years of practical experience in web development, hosting, domains, DNS, SSL, security and production troubleshooting - with growing expertise in React, DevOps and AI automation.',
+    'WordPress Developer and Web Hosting Specialist with 5+ years of hands-on experience in WordPress, WooCommerce, cPanel and Linux hosting, DNS, SSL, Cloudflare and website security, plus AI-assisted frontend work in React and Next.js.',
 
-  // Tech strip shown under the hero CTAs
-  techStrip: ['WordPress', 'React', 'Vite', 'Tailwind', 'Git', 'Cloudflare', 'Linux', 'DevOps'],
+  // Tech strip shown under the hero CTAs - mirrors the primary skill set.
+  techStrip: ['WordPress', 'WooCommerce', 'cPanel', 'Linux', 'DNS', 'SSL', 'Cloudflare', 'Website Security'],
 
   // Contact (from your CV - update if needed)
   email: 'misbahsadiach@gmail.com',
@@ -40,7 +42,6 @@ export const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Reviews', href: '#reviews' },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -56,10 +57,11 @@ export const about = {
     'My work goes beyond WordPress development. I manage hosting environments, cPanel and SPanel, domains, DNS, SSL certificates, Cloudflare, server configuration, migrations, security and production troubleshooting. I also build modern frontends with React, Vite and Tailwind CSS, and ship with Git/GitHub on platforms like Vercel and Render.',
     "I'm currently deepening my skills in DevOps, cloud deployment, AI-assisted development and workflow automation.",
   ],
+  // Only figures that can be backed up. Claims such as "75+ sites" and the
+  // SLA/uptime percentages were removed because there are no records for them.
   stats: [
     { value: '5+', label: 'Years of Experience' },
-    { value: '75+', label: 'Live Websites Deployed' },
-    { value: 'BSCS', label: 'Computer Science · 2022' },
+    { value: 'BSCS', label: 'Computer Science, 2022' },
     { value: 'DevOps', label: 'Certificate' },
   ],
   facts: [
@@ -71,135 +73,63 @@ export const about = {
   ],
 }
 
-// ----------------------------------------------------------------------------
-// Service-level stats (Ticket SLA band)
-// ----------------------------------------------------------------------------
-// A standalone metrics strip shown between the About section and Skills.
-// Values are claims about service levels - keep them truthful to your real
-// work before publishing.
-export const serviceStats = {
-  kicker: 'Service Levels',
-  items: [
-    { label: 'Ticket SLA', value: '98%', sub: 'Hosting support', tone: 'emerald' },
-    { label: 'Sites Optimized', value: '120+', sub: 'Page builders', tone: 'indigo' },
-    { label: 'Malware Cleanups', value: '400+', sub: 'Security & restore', tone: 'rose' },
-    { label: 'Uptime', value: '99.9%', sub: 'Server care', tone: 'sky' },
-  ],
-}
+// The service-level metrics band (98% SLA, 120+ optimisations, 400+ malware
+// cleanups, 99.9% uptime) was removed: none of those figures can be backed by
+// records, so they should not appear on the site. The component that rendered
+// it has been deleted rather than left as dead code.
 
 // ----------------------------------------------------------------------------
 // Skills
 // ----------------------------------------------------------------------------
 export const skills = {
   kicker: 'Skills',
-  heading: 'A full-stack skill set around WordPress.',
-  sub: 'From theme and plugin work to servers, DNS, security and modern frontend tooling - everything needed to own a website end to end.',
+  heading: 'WordPress and the hosting stack behind it.',
+  sub: 'The core skill set is WordPress and the hosting, DNS and security work that keeps it online. Frontend and AI-assisted work is listed separately, at the level it is actually used.',
   groups: [
     {
-      title: 'WordPress',
+      title: 'WordPress & WooCommerce',
       icon: 'layers',
       tone: 'emerald',
       items: [
         'WordPress',
+        'WooCommerce',
         'Elementor',
         'Elementor Pro',
-        'Hello Elementor',
         'Theme Customization',
         'Plugin Management',
         'Website Maintenance',
-        'WordPress Troubleshooting',
         'Website Migration',
+        'Backups',
       ],
     },
     {
-      title: 'Hosting & Servers',
+      title: 'Hosting, DNS & Security',
       icon: 'server',
       tone: 'sky',
       items: [
         'cPanel',
         'SPanel',
         'Linux / Ubuntu',
-        'Apache',
-        'LiteSpeed',
-        'PHP-FPM',
-        'CloudLinux',
-        'PHP Configuration',
-        'Server Resource Troubleshooting',
-      ],
-    },
-    {
-      title: 'Domains & DNS',
-      icon: 'globe',
-      tone: 'cyan',
-      items: [
-        'Domain Registration',
-        'Domain Transfers',
         'DNS Records',
-        'Nameservers',
-        'DNS Troubleshooting',
-        'SSL / AutoSSL',
-        "Let's Encrypt",
-        'Cloudflare',
-      ],
-    },
-    {
-      title: 'Security & Performance',
-      icon: 'shield',
-      tone: 'rose',
-      items: [
-        'Wordfence',
-        'Sucuri',
-        'VirusTotal',
-        'Google Safe Browsing',
+        'Domain Management',
+        'SSL / Let’s Encrypt',
         'Cloudflare',
         'Website Security',
-        'Malware Investigation',
-        'Caching',
-        'Website Performance Optimization',
+        'Malware Investigation & Removal',
+        'Server Troubleshooting',
       ],
     },
     {
-      title: 'Development',
+      title: 'Additional',
       icon: 'code',
       tone: 'violet',
-      items: [
-        'HTML',
-        'CSS',
-        'JavaScript',
-        'React',
-        'Vite',
-        'Tailwind CSS',
-        'Node.js',
-        'Express',
-        'Git',
-        'GitHub',
-      ],
+      items: ['HTML', 'CSS', 'JavaScript'],
     },
     {
-      title: 'SEO & Maintenance',
-      icon: 'search',
-      tone: 'amber',
-      items: [
-        'Rank Math SEO',
-        'Website Migrations',
-        'Backups',
-        'Technical SEO Basics',
-        'Website Monitoring',
-        'QA & Troubleshooting',
-      ],
-    },
-    {
-      title: 'AI / Automation',
+      title: 'AI-Assisted Development',
       icon: 'sparkles',
       tone: 'fuchsia',
-      items: [
-        'AI-Assisted Development',
-        'AI Website Interfaces',
-        'AI Trading Interface Development',
-        'Website Monitoring Automation',
-        'Workflow Automation',
-        'AI-Based Productivity Solutions',
-      ],
+      items: ['Claude AI', 'React', 'Next.js', 'Git / GitHub', 'Vercel'],
     },
   ],
 }
@@ -255,8 +185,7 @@ export const experience = {
       summary:
         'Built and maintained WordPress and WooCommerce websites across eCommerce, health and creative industries.',
       points: [
-        'Built 10+ WordPress websites across eCommerce, health and creative industries',
-        'Achieved 90-100 Google PageSpeed scores through server-side optimization and caching',
+        'Built WordPress websites across eCommerce, health and creative industries',
         'Developed WooCommerce stores with payment gateway integration',
         'Provided ongoing maintenance, server support and client technical assistance',
       ],
@@ -269,65 +198,61 @@ export const experience = {
 // ----------------------------------------------------------------------------
 export const projects = {
   kicker: 'Projects',
-  heading: 'Selected work & live websites.',
-  sub: 'A few of the projects I have designed, built and shipped.',
+  heading: 'WordPress and WooCommerce projects.',
+  sub: 'Client sites I built, host and maintain, with the business purpose and the technical work behind each.',
   items: [
     {
-      name: 'AI Trading / TraderAI',
-      tag: 'Web Application',
+      name: 'ThreadStudio',
+      tag: 'WooCommerce Store',
       description:
-        'A modern AI trading assistant web application built with React and Vite - a routed, production-grade interface for trading dashboards, AI-assisted chart analysis and market tools.',
-      tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'Git / GitHub', 'Render'],
+        'Fashion eCommerce store built on WordPress with WooCommerce and Elementor Pro.',
+      tech: ['WordPress', 'WooCommerce', 'Elementor Pro'],
       contribution:
-        'Built the application end to end and shipped it to production: React routing, responsive dashboards, AI assistant interface, chart analysis UI, custom-domain configuration and performance / caching optimization.',
-      url: 'https://ai-trader.trade/',
-      github: 'https://github.com/ZeeTech-Pvt-Ltd/traderai',
+        'Built and maintained the storefront: WooCommerce setup, Elementor Pro layouts, theme and plugin upkeep, and ongoing site maintenance.',
+      url: 'https://threadstudioofficial.com',
+      github: '#',
     },
     {
-      name: 'Zephgain',
-      tag: 'Web Application',
+      name: 'Nomad Law',
+      tag: 'Business Website',
       description:
-        'A pre-rendered React marketing site for an AI-powered automated trading platform in the Australian market. Every route ships as static HTML with its own head, structured data and inlined CSS.',
-      tech: ['React', 'Vite', 'Pre-rendering / SSG', 'Per-route SEO', 'JSON-LD', 'Vercel'],
+        'Website for a Swiss law firm, delivered in English and German for a bilingual client base.',
+      tech: ['WordPress', 'Bilingual EN/DE', 'DNS', 'SSL'],
       contribution:
-        'Built and shipped the front end: clean-path routing with legacy redirects, a pre-render pipeline that renders every route to static HTML, per-route SEO with Organization, Service and FAQPage structured data, a validated registration form, and a real 404 page served as a 404 rather than a soft fallback.',
-      url: 'https://zephgain-au.com/',
-      github: 'https://github.com/ZeeTech-Pvt-Ltd/Zephgain',
+        'Built the bilingual site and configured the .ch domain, DNS records and SSL for the Swiss market.',
+      url: 'https://nomadlaw.ch',
+      github: '#',
     },
     {
-      name: 'AI Pro App',
-      tag: 'Web Application',
+      name: 'BioGenie',
+      tag: 'WooCommerce Store',
       description:
-        'A multi-page React site for an AI-assisted crypto research and market education platform in Australia, using hand-written SVG charts instead of a charting library.',
-      tech: ['React', 'Vite', 'Tailwind CSS', 'Multi-page build', 'SVG Charts', 'GA4'],
+        'French-language skincare eCommerce store on WordPress and WooCommerce.',
+      tech: ['WordPress', 'WooCommerce', 'Performance'],
       contribution:
-        'Built the interface and the build setup end to end: clean-URL routing across 10 static entry points with 308 redirects from the legacy .html links, a post-build step that inlines CSS to remove render-blocking stylesheet requests, an accessible single-open FAQ accordion, legal modals for Privacy, Terms and Risk Disclosure, and a registration form with inline validation and a loading state.',
-      url: 'https://ai-proapp.com/',
-      github: 'https://github.com/ZeeTech-Pvt-Ltd/AI-Pro-App',
+        'Built and optimised the storefront, including WooCommerce setup and page speed work.',
+      url: 'https://biogenie.dz',
+      github: '#',
     },
     {
-      name: 'Production WordPress & Hosting Troubleshooting',
-      tag: 'Case Study',
+      name: 'eQuran School',
+      tag: 'Education Website',
       description:
-        'Real-world production troubleshooting across WordPress websites, hosting servers, DNS, SSL, PHP configuration, plugins, Cloudflare and performance.',
-      tech: ['WordPress', 'cPanel / SPanel', 'Cloudflare', 'DNS', 'SSL', 'PHP-FPM', 'LiteSpeed'],
+        'Online Islamic education website serving students across multiple timezones.',
+      tech: ['WordPress', 'Linux / SSH', 'Hosting'],
       contribution:
-        'Resolved critical WordPress errors, PHP configuration and limit issues, plugin conflicts, SSL problems, DNS/SERVFAIL issues, PHP-FPM/resource problems and Cloudflare configuration - plus website migrations and hosting-provider support escalation.',
-      url: '#', // TODO: add a case-study page link when available
-      github: '#', // TODO: add the repository URL when available
+        'Managed the site and its server over SSH, including hosting configuration and ongoing maintenance.',
+      url: 'https://equranschool.com',
+      github: '#',
     },
   ],
   liveSites: {
     title: 'Selected Live Websites',
-    note: 'Production sites I have built and maintained for clients, listed in my professional CV.',
+    note: 'Additional production sites I have built and maintained for clients.',
     // TODO: remove or edit any site below you no longer want listed.
     sites: [
-      { name: 'threadstudioofficial.com', note: 'Fashion eCommerce - WooCommerce, Elementor Pro', url: 'https://threadstudioofficial.com' },
-      { name: 'nomadlaw.ch', note: 'Swiss law firm - multilingual EN/DE, DNS & SSL', url: 'https://nomadlaw.ch' },
       { name: 'ai-trader.trade', note: 'AI trading education - hardened server, API integrated', url: 'https://ai-trader.trade/' },
       { name: 'zenon-flow.net', note: 'Investment platform - firewall, real-time data', url: 'https://zenon-flow.net' },
-      { name: 'biogenie.dz', note: 'French skincare eCommerce - WooCommerce, optimized', url: 'https://biogenie.dz' },
-      { name: 'equranschool.com', note: 'Islamic education - SSH-managed, multi-timezone', url: 'https://equranschool.com' },
       { name: 'gain-oilprofit.com', note: 'Oil trading - live financial data, server admin', url: 'https://gain-oilprofit.com' },
       { name: 'forexfury.bot', note: 'Forex automation - plugin integration, market feeds', url: 'https://forexfury.bot' },
       { name: 'site-trust.com', note: 'Business review platform - security hardened', url: 'https://site-trust.com' },
@@ -347,6 +272,56 @@ export const projects = {
       { name: 'krelixbardenai.com', note: 'AI market analysis for Germany, German market', url: 'https://krelixbardenai.com/' },
     ],
   },
+}
+
+// ----------------------------------------------------------------------------
+// AI-assisted frontend projects
+// ----------------------------------------------------------------------------
+// Kept separate from the WordPress work on purpose: these are React and
+// Next.js builds where Claude AI writes most of the code and I direct, review,
+// adapt and deploy it. The copy says that plainly rather than implying
+// independent senior-level React or Next.js engineering.
+export const frontendProjects = {
+  kicker: 'AI-Assisted Frontend',
+  heading: 'AI-assisted React and Next.js projects.',
+  sub: 'Frontend builds delivered with Claude AI as a development partner. These sit alongside the WordPress work, not in place of it.',
+  workflow: [
+    'I set the page structure, content and requirements, then work through the build with Claude AI.',
+    'I review and adapt the generated code, handle responsive layout and SEO metadata, and deploy through Git and Vercel.',
+    'These are AI-assisted builds. I do not present them as independent senior-level React or Next.js engineering.',
+  ],
+  items: [
+    {
+      name: 'TraderAI',
+      stack: 'React, Vite, Tailwind CSS',
+      description:
+        'Trading dashboard interface for an AI trading education platform.',
+      contribution:
+        'Built the frontend with Claude AI assistance: responsive dashboard layouts, routed pages, chart analysis UI and production deployment on Render.',
+      url: 'https://ai-trader.trade/',
+      github: 'https://github.com/ZeeTech-Pvt-Ltd/traderai',
+    },
+    {
+      name: 'Zephgain',
+      stack: 'React, Vite',
+      description:
+        'Pre-rendered marketing site for an AI trading platform in the Australian market.',
+      contribution:
+        'Built the frontend with Claude AI assistance: clean-path routing, a pre-render pipeline that emits static HTML per route, per-route SEO metadata and a validated registration form.',
+      url: 'https://zephgain-au.com/',
+      github: 'https://github.com/ZeeTech-Pvt-Ltd/Zephgain',
+    },
+    {
+      name: 'AI Pro App',
+      stack: 'Next.js, React, Tailwind CSS',
+      description:
+        'Multi-page site for an AI crypto research and market education platform.',
+      contribution:
+        'Built the frontend with Claude AI assistance: multi-page routing, a post-build step that inlines CSS, an accessible FAQ accordion, legal modals and a validated form.',
+      url: 'https://ai-proapp.com/',
+      github: 'https://github.com/ZeeTech-Pvt-Ltd/AI-Pro-App',
+    },
+  ],
 }
 
 // ----------------------------------------------------------------------------

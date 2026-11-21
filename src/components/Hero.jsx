@@ -4,9 +4,13 @@ import { profile } from '../data/portfolio.js'
 
 const ease = [0.21, 0.47, 0.32, 0.98]
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 18 },
-  animate: { opacity: 1, y: 0 },
+// Transform only, no opacity. The hero carries the H1, which is the largest
+// element on the page, so starting it at opacity 0 defers the largest
+// contentful paint until React hydrates. A short rise keeps the motion while
+// leaving the text fully visible on the first paint, with no JavaScript needed.
+const riseIn = (delay = 0) => ({
+  initial: { y: 18 },
+  animate: { y: 0 },
   transition: { duration: 0.55, delay, ease },
 })
 
@@ -24,8 +28,10 @@ const systemRows = [
 ]
 
 export default function Hero() {
-  const [firstLine, rest] = profile.heading.split(' From Development to Deployment.')
-  const secondLine = rest !== undefined ? 'From Development to Deployment.' : firstLine
+  // Two explicit lines rather than splitting one string, so the copy can change
+  // without the layout silently losing its accent half.
+  const firstLine = profile.headingLead
+  const secondLine = profile.headingAccent
 
   return (
     <section id="home" aria-label="Introduction" className="relative overflow-hidden">
@@ -43,7 +49,7 @@ export default function Hero() {
         {/* Left - copy */}
         <div className="lg:col-span-7">
           <motion.p
-            {...fadeUp(0)}
+            {...riseIn(0)}
             className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 py-1.5 pl-2 pr-4 text-xs font-medium text-slate-300"
           >
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
@@ -51,18 +57,18 @@ export default function Hero() {
           </motion.p>
 
           <motion.h1
-            {...fadeUp(0.08)}
+            {...riseIn(0.08)}
             className="text-4xl font-bold leading-[1.08] tracking-tight text-paper sm:text-5xl lg:text-6xl text-pretty"
           >
             {firstLine}{' '}
             <span className="text-accent">{secondLine}</span>
           </motion.h1>
 
-          <motion.p {...fadeUp(0.16)} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+          <motion.p {...riseIn(0.16)} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
             {profile.heroText}
           </motion.p>
 
-          <motion.div {...fadeUp(0.24)} className="mt-9 flex flex-wrap items-center gap-4">
+          <motion.div {...riseIn(0.24)} className="mt-9 flex flex-wrap items-center gap-4">
             <a href="#projects" className="btn-primary">
               View My Work
               <ArrowRight size={16} aria-hidden="true" />
@@ -73,7 +79,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Tech strip */}
-          <motion.div {...fadeUp(0.32)} className="mt-12">
+          <motion.div {...riseIn(0.32)} className="mt-12">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">Core stack</p>
             <ul className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-slate-300">
               {profile.techStrip.map((tech, i) => (
@@ -91,7 +97,7 @@ export default function Hero() {
         </div>
 
         {/* Right - capability card */}
-        <motion.div {...fadeUp(0.2)} className="lg:col-span-5">
+        <motion.div {...riseIn(0.2)} className="lg:col-span-5">
           <div className="relative mx-auto max-w-md">
             <div
               aria-hidden="true"

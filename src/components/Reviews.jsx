@@ -139,9 +139,15 @@ export default function Reviews() {
       try {
         await submitReview(payload)
       } catch (err) {
-        // The table does not have a project_type column yet. Save the review
-        // without it rather than lose the whole submission.
-        if (err?.code === '42703' && /project_type/i.test(err.message || '')) {
+        // The table may not have a project_type column. PostgREST reports an
+        // unknown column as PGRST204 on insert (42703 comes back for a select),
+        // so both are handled. Save the review without it rather than lose the
+        // whole submission.
+        const missingProjectType =
+          (err?.code === 'PGRST204' || err?.code === '42703') &&
+          /project_type/i.test(err.message || '')
+
+        if (missingProjectType) {
           const { project_type: _ignored, ...withoutProjectType } = payload
           await submitReview(withoutProjectType)
           console.warn(
